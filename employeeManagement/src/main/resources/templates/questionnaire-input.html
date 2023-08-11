@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<title>アンケート入力画面</title>
+</head>
+
+<body>
+	<div id="mainArea">
+		<h1>アンケート</h1>
+		<h2>アンケート入力画面</h2>
+		<form method="post" th:action="@{/questionaryInput}"
+											th:object="${questionaryForm}"
+											class="questionList">
+			<input type="hidden" name="enqueteId" value="">
+			<div class="questionItem">
+				<p class="questionTitle">最近楽しかったできごとは？</p>
+				<div class="answer">
+					<input type="text" name="answerText" />
+				</div>
+			</div>
+			<div class="questionItem">
+				<p class="questionTitle">趣味を選択してください</p>
+				<div class="answer">
+					<input type="checkbox" name="hobby" value="1">釣り
+					<input type="checkbox" name="hobby" value="2">読書
+					<input type="checkbox" name="hobby" value="3">ゲーム
+					<input type="checkbox" name="hobby" value="4">スポーツ
+				</div>
+			</div>
+			<div class="questionItem">
+				<p class="questionTitle">性別は？</p>
+				<div class="answer">
+					<input type="radio" name="answer" value="女性">女性
+					<input type="radio" name="answer" value="女性">男性
+				</div>
+			</div>
+		</form>
+	</div>
+	<div id="footerArea">
+		<a th:href="@{/}">[トップに戻る]</a>
+	</div>
+</body>
+
+</html>

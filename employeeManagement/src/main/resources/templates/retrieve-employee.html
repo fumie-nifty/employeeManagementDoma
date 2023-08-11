@@ -1,0 +1,39 @@
+<!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>従業員検索結果画面</title>
+</head>
+<body>
+	<div id="mainArea">
+		<h1>従業員検索<div class="userName">ユーザ名：<span th:text="${LOGINUSER}"></span></div></h1>
+		<h2>従業員検索結果画面</h2>
+		<p>検索結果が見つかりました</p>
+		<table border="1">
+			<tr>
+				<th>従業員ID</th>
+				<td th:text="${employee.employeeId}">employeeId</td>
+			</tr>
+			<tr>
+				<th>従業員名</th>
+				<td th:text="${employee.employeeName}">employeeName</td>
+			</tr>
+			<tr>
+				<th>部署名</th>
+				<td th:text="${employee.section}">section</td>
+			</tr>
+			<tr>
+				<th>内線番号</th>
+				<td th:text="${employee.phone}">phone</td>
+			</tr>
+		</table>
+		<br>
+		<a th:href="@{/search}">[戻る]</a>
+	</div>
+	<div id="footerArea" >
+		<a th:href="@{/}">[トップに戻る]</a>
+	</div>
+</body>
+</html>

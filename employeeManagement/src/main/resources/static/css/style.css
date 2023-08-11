@@ -1,0 +1,119 @@
+@CHARSET "UTF-8";
+
+/*全体共通　要素ごとのスタイル定義*/
+body {
+	margin-left: 100px;
+	margin-right: 100px;
+	padding: 0px;
+	font-family: "Hiragino Kaku Gothic ProN", "meiryo";
+	font-size: 12pt;
+}
+
+input {
+	font-size: 12pt;
+}
+
+button {
+	width: 100px;
+	height: 30px;
+	font-size: 12pt;
+	font-weight: bold;
+	background-color: #8aec8a;
+	border-radius: 5px;
+	border-color: #8aec8a;
+	border-style: none;
+}
+
+img {
+	border-style: none;
+	border: 0;
+	width: 130px;
+	height: 130px;
+}
+
+/*エラーメッセージ*/
+#error {
+	text-align: left;
+	color: red
+}
+
+/*フッター*/
+#footerArea {
+	margin-top: 30px;
+	border-top: 1px solid #008000;
+	text-align: center;
+}
+
+/*メインコンテンツ*/
+#mainArea {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#mainArea h1 {
+	font-size: 14pt;
+	border-bottom: 3px solid #008040;
+	text-align: left;
+}
+
+#mainArea .userName{
+	font-size: 10pt;
+	margin-top: -20px;
+	text-align: right;
+	
+}
+
+#mainArea h2 {
+	font-size: 18pt;
+	color:#0000ff;
+}
+
+#mainArea table {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+#mainArea caption {
+	text-align: left;
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+#mainArea th {
+	background-color: #d0f9d3;
+	padding: 10px;
+}
+
+#mainArea td {
+	padding: 10px;
+	position: relative;
+}
+
+/*エラーメッセージ*/
+.errorMsg {
+	text-align: center;
+	color: red
+}
+
+.questionItem {
+    margin: 2em auto;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+    width: 400px;
+}
+.questionItem .questionTitle {
+    font-size: 1.2em;
+    background: #5fc2f5;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.questionItem .answer {
+    padding: 15px 20px;
+    margin: 0 auto;
+}

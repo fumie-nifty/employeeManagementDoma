@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<category categoryId="a" categoryName="スポーツシューズ" picture="a.gif" />
+	<category categoryId="b" categoryName="スニーカー" picture="b.gif" />
+	<category categoryId="c" categoryName="サンダル" picture="c.gif" />
+	<category categoryId="d" categoryName="ウォーキングシューズ" picture="d.gif" />
+	<category categoryId="e" categoryName="シャツ" picture="e.png" />
+	<category categoryId="f" categoryName="グッズ" picture="f.png" />
+
+	<product productId="a01" categoryId="a" productName="ALL STAR one" price="15000" picture="a01.gif" point="150"  />
+	<product productId="a02" categoryId="a" productName="Star Speeder HI" price="13800" picture="a02.gif" point="138"  />
+	<product productId="a03" categoryId="a" productName="Scuderia-α" price="15000" picture="a03.gif" point="150"  />
+	<product productId="a04" categoryId="a" productName="エアロセプシー" price="12000" picture="a04.gif" point="120"  />
+	<product productId="a05" categoryId="a" productName="Squadra Nova" price="12000" picture="a05.gif" point="120"  />
+	<product productId="a06" categoryId="a" productName="Squadra Stellar" price="9800" picture="a06.gif" point="98"  />
+	<product productId="a07" categoryId="a" productName="Squadra Estoile" price="8500" picture="a07.gif" point="85"  />
+	<product productId="a08" categoryId="a" productName="Squadra Hobit" price="6800" picture="a08.gif" point="68"  />
+	<product productId="a09" categoryId="a" productName="ヒュプノクラウン2000" price="16000" picture="a09.gif" point="160"  />
+	<product productId="a10" categoryId="a" productName="SLIP STREAM" price="12500" picture="a10.gif" point="125"  />
+	<product productId="a11" categoryId="a" productName="ストラーダ ラップリーダー" price="25000" picture="a11.gif" point="250"  />
+	<product productId="a12" categoryId="a" productName="Star Speeder Kids" price="6700" picture="a12.gif" point="67"  />
+	<product productId="b01" categoryId="b" productName="ドライブステッパー" price="9500" picture="b01.gif" point="95"  />
+	<product productId="b02" categoryId="b" productName="Effect Machine III" price="17800" picture="b02.gif" point="178"  />
+	<product productId="b03" categoryId="b" productName="クロスオーバードライブ" price="12800" picture="b03.gif" point="128"  />
+	<product productId="b04" categoryId="b" productName="Scuderia 11" price="12800" picture="b04.gif" point="128"  />
+	<product productId="b05" categoryId="b" productName="インターセプター" price="9800" picture="b05.gif" point="98"  />
+	<product productId="b06" categoryId="b" productName="Winglet RX" price="18000" picture="b06.gif" point="180"  />
+	<product productId="b07" categoryId="b" productName="ストラーダ フラット" price="12300" picture="b07.gif" point="123"  />
+	<product productId="b08" categoryId="b" productName="ストラーダ ZERO" price="19800" picture="b08.gif" point="198"  />
+	<product productId="b09" categoryId="b" productName="capsule LDK" price="8800" picture="b09.gif" point="88"  />
+	<product productId="b10" categoryId="b" productName="Urban Complex" price="7800" picture="b10.gif" point="78"  />
+	<product productId="b11" categoryId="b" productName="Scuderia KAAR" price="5600" picture="b11.gif" point="56"  />
+	<product productId="c01" categoryId="c" productName="ビルケンサンダル（WH）" price="9800" picture="c01.gif" point="98"  />
+	<product productId="c02" categoryId="c" productName="ビルケンサンダル（BK）" price="9800" picture="c02.gif" point="98"  />
+	<product productId="c03" categoryId="c" productName="シティサンダル（PK）" price="5200" picture="c03.gif" point="52"  />
+	<product productId="c04" categoryId="c" productName="シティサンダル（BL）" price="5200" picture="c04.gif" point="52"  />
+	<product productId="c05" categoryId="c" productName="シティサンダル（YE）" price="5200" picture="c05.gif" point="52"  />
+	<product productId="c06" categoryId="c" productName="シティサンダルK（BL）" price="3800" picture="c06.gif" point="38"  />
+	<product productId="c07" categoryId="c" productName="シティサンダルK（PK）" price="3800" picture="c07.gif" point="38"  />
+	<product productId="d01" categoryId="d" productName="Star Speeder MID" price="12800" picture="d01.gif" point="128"  />
+	<product productId="d02" categoryId="d" productName="SKY POINTER" price="9800" picture="d02.gif" point="98"  />
+	<product productId="d03" categoryId="d" productName="Scuderia 914" price="16000" picture="d03.gif" point="160"  />
+	<product productId="d04" categoryId="d" productName="5iVE STAR" price="9800" picture="d04.gif" point="98"  />
+	<product productId="d05" categoryId="d" productName="SS LightTone" price="9800" picture="d05.gif" point="98"  />
+	<product productId="e01" categoryId="e" productName="アニマルTシャツ（カエル）" price="2380" picture="e01.png" point="23"  />
+	<product productId="e02" categoryId="e" productName="アニマルTシャツ（ウサギ）" price="2380" picture="e02.png" point="23"  />
+	<product productId="e03" categoryId="e" productName="アニマルTシャツ（シカ）" price="2380" picture="e03.png" point="23"  />
+	<product productId="e04" categoryId="e" productName="アニマルTシャツ（コブタ）" price="2380" picture="e04.png" point="23"  />
+	<product productId="e05" categoryId="e" productName="アニマルTシャツ（アヒル）" price="2380" picture="e05.png" point="23"  />
+	<product productId="e06" categoryId="e" productName="チェックポロシャツ（BK）" price="3800" picture="e06.png" point="38"  />
+	<product productId="e07" categoryId="e" productName="チェックポロシャツ（GR）" price="3800" picture="e07.png" point="38"  />
+	<product productId="e08" categoryId="e" productName="チェックポロシャツ（RD）" price="3800" picture="e08.png" point="38"  />
+	<product productId="e09" categoryId="e" productName="キッズTシャツ（Apple）" price="1700" picture="e09.png" point="17"  />
+	<product productId="f01" categoryId="f" productName="フラワースイムバッグ" price="2200" picture="f01.png" point="22"  />
+	<product productId="f02" categoryId="f" productName="フルーツスイムバッグ" price="2200" picture="f02.png" point="22"  />
+	<product productId="f03" categoryId="f" productName="FlowerBag（TypeA）" price="1800" picture="f03.png" point="18"  />
+	<product productId="f04" categoryId="f" productName="FlowerBag（TypeB）" price="1800" picture="f04.png" point="18"  />
+	<product productId="f05" categoryId="f" productName="FlowerBag（TypeC）" price="1800" picture="f05.png" point="18"  />
+	<product productId="f06" categoryId="f" productName="FlowerBag（TypeD）" price="1800" picture="f06.png" point="18"  />
+	<product productId="f07" categoryId="f" productName="FlowerBag（TypeE）" price="1800" picture="f07.png" point="18"  />
+	<product productId="f08" categoryId="f" productName="カラフルシュシュ（TypeA）" price="780" picture="f08.png" point="7"  />
+	<product productId="f09" categoryId="f" productName="カラフルシュシュ（TypeB）" price="780" picture="f09.png" point="7"  />
+	<product productId="f10" categoryId="f" productName="カラフルシュシュ（TypeC）" price="780" picture="f10.png" point="7"  />
+	<product productId="f11" categoryId="f" productName="カラフルシュシュ（TypeD）" price="780" picture="f11.png" point="7"  />
+	<product productId="f12" categoryId="f" productName="カラフルシュシュ（TypeE）" price="780" picture="f12.png" point="7"  />
+	<product productId="f13" categoryId="f" productName="カラフルシュシュ（TypeF）" price="780" picture="f13.png" point="7"  />
+
+	<stock productId="a01" quantity="100" />
+	<stock productId="a02" quantity="100" />
+	<stock productId="a03" quantity="100" />
+	<stock productId="a04" quantity="100" />
+	<stock productId="a05" quantity="100" />
+	<stock productId="a06" quantity="100" />
+	<stock productId="a07" quantity="100" />
+	<stock productId="a08" quantity="100" />
+	<stock productId="a09" quantity="100" />
+	<stock productId="a10" quantity="100" />
+	<stock productId="a11" quantity="100" />
+	<stock productId="a12" quantity="100" />
+	<stock productId="b01" quantity="100" />
+	<stock productId="b02" quantity="100" />
+	<stock productId="b03" quantity="100" />
+	<stock productId="b04" quantity="100" />
+	<stock productId="b05" quantity="100" />
+	<stock productId="b06" quantity="100" />
+	<stock productId="b07" quantity="100" />
+	<stock productId="b08" quantity="100" />
+	<stock productId="b09" quantity="100" />
+	<stock productId="b10" quantity="100" />
+	<stock productId="b11" quantity="100" />
+	<stock productId="c01" quantity="100" />
+	<stock productId="c02" quantity="100" />
+	<stock productId="c03" quantity="100" />
+	<stock productId="c04" quantity="100" />
+	<stock productId="c05" quantity="100" />
+	<stock productId="c06" quantity="100" />
+	<stock productId="c07" quantity="100" />
+	<stock productId="d01" quantity="100" />
+	<stock productId="d02" quantity="100" />
+	<stock productId="d03" quantity="100" />
+	<stock productId="d04" quantity="100" />
+	<stock productId="d05" quantity="100" />
+	<stock productId="e01" quantity="100" />
+	<stock productId="e02" quantity="100" />
+	<stock productId="e03" quantity="100" />
+	<stock productId="e04" quantity="100" />
+	<stock productId="e05" quantity="100" />
+	<stock productId="e06" quantity="100" />
+	<stock productId="e07" quantity="100" />
+	<stock productId="e08" quantity="100" />
+	<stock productId="e09" quantity="100" />
+	<stock productId="f01" quantity="100" />
+	<stock productId="f02" quantity="100" />
+	<stock productId="f03" quantity="100" />
+	<stock productId="f04" quantity="100" />
+	<stock productId="f05" quantity="100" />
+	<stock productId="f06" quantity="100" />
+	<stock productId="f07" quantity="100" />
+	<stock productId="f08" quantity="100" />
+	<stock productId="f09" quantity="100" />
+	<stock productId="f10" quantity="100" />
+	<stock productId="f11" quantity="100" />
+	<stock productId="f12" quantity="100" />
+	<stock productId="f13" quantity="100" />
+
+	<member memberId="test2" password="$argon2id$v=19$m=16,t=2,p=1$UXptdXJxdk9QMTRic1psbw$8RlOZ4Yi/I9e1FYM9kD2jg" memberName="渡邉 準" gender="M" address="東京都 大田区 蒲田0-0-0" phone="03-2222-3333" memberPoint="0" />
+	<member memberId="test1" password="$argon2id$v=19$m=16,t=2,p=1$UXptdXJxdk9QMTRic1psbw$8RlOZ4Yi/I9e1FYM9kD2jg" memberName="飯田 哲夫" gender="M" address="東京都 大田区 池上0-0-0" phone="03-1111-2222" memberPoint="652" />
+
+	<employee employeeId="922101" employeeName="鈴木　一郎" section="研修部" phone="7700-2257" />
+	<employee employeeId="922102" employeeName="田村　正人" section="研修部" phone="7700-2258" />
+	<employee employeeId="922103" employeeName="松田　明美" section="開発部" phone="7712-4418" />
+	<employee employeeId="922104" employeeName="浅井　順二" section="開発部" phone="7712-4416" />
+	<employee employeeId="922105" employeeName="高橋　道夫" section="営業部" phone="7712-3316" />
+	<employee employeeId="922106" employeeName="夏木　裕子" section="営業部" phone="7712-3317" />
+</dataset>

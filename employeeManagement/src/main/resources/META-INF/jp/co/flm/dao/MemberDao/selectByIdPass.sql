@@ -1,0 +1,1 @@
+SELECT * FROM member WHERE memberId=/* memberId */1 and password=/* password */2;

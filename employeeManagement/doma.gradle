@@ -1,0 +1,25 @@
+task copyDomaResources(type: Sync)  {
+    from sourceSets.main.resources.srcDirs
+    into compileJava.destinationDir
+    include 'doma.compile.config'
+    include 'META-INF/**/*.sql'
+    include 'META-INF/**/*.script'
+}
+
+compileJava {
+    dependsOn copyDomaResources
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs = ['-proc:none']
+}
+
+dependencies {
+  // Doma Dependencies
+ 	annotationProcessor "org.seasar.doma:doma-processor:2.53.3"
+	implementation "org.seasar.doma:doma-core:2.53.3"
+}
+
+
