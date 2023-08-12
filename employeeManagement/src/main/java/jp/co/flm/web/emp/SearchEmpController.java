@@ -87,7 +87,7 @@ public class SearchEmpController {
 		//Teamsに結果通知
 		this.sendTeamsKuga(title,message);
 		String url = 
-				"/webhookb2/f23d105d-72e9-4b35-8c8d-707d946a1de4@fccbe2bf-88de-49c4-af92-1e9500cb29a4/IncomingWebhook/fb80cadebb4e499d8e23acacc58dde8e/2a42f0dd-1fb2-41a3-91e0-4afb29a27b7a";
+				"https://esq365.webhook.office.com/webhookb2/f23d105d-72e9-4b35-8c8d-707d946a1de4@fccbe2bf-88de-49c4-af92-1e9500cb29a4/IncomingWebhook/a4e12f85f334436eac1b46217a8545d8/2a42f0dd-1fb2-41a3-91e0-4afb29a27b7a";
 		String id = "xkuga.fumie@contract.isid.co.jp";
 		String name = "久賀";
 		String text = "テストメッセージ";

@@ -43,7 +43,6 @@ public class WebHookConfigulation {
 				.requestFactory(()->requestFactory)
 				.setConnectTimeout(Duration.ofSeconds(5l))
 				.setReadTimeout(Duration.ofSeconds(5l))
-				.rootUri(END_POINT)
 				.build();
 		//restTemplate.setRequestFactory(requestFactory);
 		
