@@ -15,9 +15,7 @@
 				ユーザ名：<span sec:authentication="principal.username">ユーザ名</span>
 			</div>
 			<div class="userName" sec:authorize="anonymous">
-				<form>
-					<button th:formaction="@{/login}">ログイン</button>
-				</form>
+				<a th:href="@{/login}">ログイン</a>
 			</div>
 		</h1>
 		<h3 sec:authorize="authenticated">

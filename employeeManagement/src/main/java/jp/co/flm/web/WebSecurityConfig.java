@@ -39,6 +39,7 @@ public class WebSecurityConfig {
 		//フォーム認証の設定
 		http.formLogin()
 			.loginPage("/login")					//ログイン画面URL
+			//.loginProcessingUrl("/login")			//ユーザ名、パスワードの送信先URL
 			.defaultSuccessUrl("/")					//ログイン成功後のリクエストURLがなかった場合の遷移先URL。
 													//リクエストURLがある場合は認証後にリクエストURLに遷移する
 													//ログイン後に必ず「/」に遷移させる場合は.defaultSuccessUrl("/",true)とする
