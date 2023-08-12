@@ -53,13 +53,14 @@ img {
 
 #mainArea h1 {
 	font-size: 14pt;
+	padding-bottom: 5px;
 	border-bottom: 3px solid #008040;
 	text-align: left;
 }
 
 #mainArea .userName{
 	font-size: 10pt;
-	margin-top: -20px;
+	margin-top: -25px;
 	text-align: right;
 }
 
@@ -115,4 +116,21 @@ img {
 .questionItem .answer {
     padding: 15px 20px;
     margin: 0 auto;
+}
+
+a.login_top {
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 60px;
+	padding: 0 10px 0 10px;
+	font-weight: bold;
+	border: 2px solid #8aec8a;
+	color: #8aec8a;
+	transition: 0.5s;
+}
+
+a.login_top:hover {
+	color: #fff;
+	background: #8aec8a;
 }

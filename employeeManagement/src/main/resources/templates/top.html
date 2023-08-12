@@ -1,6 +1,8 @@
 <!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<html 	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" 
+		lang="ja">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
@@ -8,15 +10,28 @@
 </head>
 <body>
 	<div id="mainArea">
-		<h1>例題一覧<div class="userName">ユーザ名：<span th:text="${LOGINUSER}"></span></div></h1>
-		<h3>ようこそ <span th:text="${LOGINUSER}">匿名</span> さん</h3>
+		<h1>例題一覧
+			<div class="userName" sec:authorize="authenticated">
+				ユーザ名：<span sec:authentication="principal.username">ユーザ名</span>
+			</div>
+			<div class="userName" sec:authorize="anonymous">
+				<a th:href="@{/login}" class="login_top">ログイン</a>
+			</div>
+		</h1>
+		<h3 sec:authorize="authenticated">
+			ようこそ <span sec:authentication="principal.username">ユーザ名</span> さん
+		</h3>
 		<p><a  th:href="@{/search}">従業員検索</a></p>
 		<p><a  th:href="@{/inputInsert}">従業員登録</a></p>
 		<p><a th:href="@{/retrieveAllEmployee}">従業員一覧</a></p>
 		<br>
+	</p>
+	</div>
+	<div id="footerArea" >
+		<br>
 		<form>
 			<button th:formaction="@{/logout}">ログアウト</button>
 		</form>
-	</p>
+	</div>
 </body>
 </html>

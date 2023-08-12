@@ -25,19 +25,34 @@ import jp.co.flm.service.MemberinfoService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+	
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
-		http.authorizeHttpRequests()
-			.antMatchers("/images/**","/css/**","/script/*").permitAll()
-			.anyRequest().authenticated();
+		//URLごとの認可の設定
+		http.authorizeHttpRequests()							//URL毎の認可設定の開始
+			.antMatchers("/images/**","/css/**","/script/*","/")
+										.permitAll()			//image、css、JavaScriptは未ログイン時でもアクセス可能
+			.anyRequest().authenticated();						//その他のURLはログイン後のみアクセス可能
 		
+		//フォーム認証の設定
 		http.formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/").permitAll();	//ログイン後に必ず「/」に遷移させる場合は.defaultSuccessUrl("/",true)とする
+			.loginPage("/login")					//ログイン画面URL
+			//.loginProcessingUrl("/login")			//ユーザ名、パスワードの送信先URL
+			.defaultSuccessUrl("/")					//ログイン成功後のリクエストURLがなかった場合の遷移先URL。
+													//リクエストURLがある場合は認証後にリクエストURLに遷移する
+													//ログイン後に必ず「/」に遷移させる場合は.defaultSuccessUrl("/",true)とする
+			//.failureUrl("")						//ログイン失敗時の遷移先URL
+			//.usernameParameter("")				//ログインフォームのユーザー名（デフォルト：username）
+			//.passwordParameter("")				//ログインフォームのパスワード（デフォルト：password）
+			.permitAll();							//ログイン画面は未ログイン時でもアクセス可能
 		
-		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout**")).permitAll();
+		//ログアウトの設定
+		http.logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))	//GETの場合
+			//.logoutUrl("")												//POSTの場合
+			.permitAll();
 		
 		return http.build();
 	}
@@ -50,7 +65,8 @@ public class WebSecurityConfig {
 		
 		@Override
 		public void init(AuthenticationManagerBuilder auth) throws Exception{
-			auth.userDetailsService(memberinfoService).passwordEncoder(new Argon2PasswordEncoder());
+			auth.userDetailsService(memberinfoService)				//ユーザー認証するサービスの設定
+				.passwordEncoder(new Argon2PasswordEncoder());		//ハッシュ関数の登録
 		}
 	}
 }

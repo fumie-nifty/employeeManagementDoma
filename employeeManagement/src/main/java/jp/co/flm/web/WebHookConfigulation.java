@@ -17,6 +17,7 @@ public class WebHookConfigulation {
 	
 	@Value("${http.proxy.host}")
 	private String PROXY_HOST;
+	
 	@Value("${http.proxy.port}")
 	private int PROXY_PORT;
 	
