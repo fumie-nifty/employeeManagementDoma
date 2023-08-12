@@ -15,9 +15,7 @@
 				ユーザ名：<span sec:authentication="principal.username">ユーザ名</span>
 			</div>
 			<div class="userName" sec:authorize="anonymous">
-				<form>
-					<button th:formaction="@{/login}">ログイン</button>
-				</form>
+				<a th:href="@{/login}" class="login_top">ログイン</a>
 			</div>
 		</h1>
 		<h3 sec:authorize="authenticated">
@@ -27,9 +25,13 @@
 		<p><a  th:href="@{/inputInsert}">従業員登録</a></p>
 		<p><a th:href="@{/retrieveAllEmployee}">従業員一覧</a></p>
 		<br>
+	</p>
+	</div>
+	<div id="footerArea" >
+		<br>
 		<form>
 			<button th:formaction="@{/logout}">ログアウト</button>
 		</form>
-	</p>
+	</div>
 </body>
 </html>
