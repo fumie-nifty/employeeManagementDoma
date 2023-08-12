@@ -4,12 +4,8 @@
  */
 package jp.co.flm.web.emp;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import jp.co.flm.service.dto.LoginUser;
 
 /**
  * TopControllerクラス
@@ -25,14 +21,14 @@ public class TopController {
 	 * @param loginUser 認証済みユーザー情報
 	 * @return
 	 */
-	@ModelAttribute(name = "LOGINUSER")
-	public String setLoginUser(@AuthenticationPrincipal LoginUser loginUser) {
-		String result = null;
-		if(loginUser!=null) {
-			result=loginUser.getUsername();
-		}
-		return result;
-	}
+//	@ModelAttribute(name = "LOGINUSER")
+//	public String setLoginUser(@AuthenticationPrincipal LoginUser loginUser) {
+//		String result = null;
+//		if(loginUser!=null) {
+//			result=loginUser.getUsername();
+//		}
+//		return result;
+//	}
 	
 	
 	/**

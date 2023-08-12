@@ -2,7 +2,7 @@ package jp.co.flm.common;
 
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 
-public class PasswordEncoder {
+public class PasswordEncoderArgon2 {
 
     //Argon2でパスワードをハッシュ化するテスト
     public static void main(String[] args) {
