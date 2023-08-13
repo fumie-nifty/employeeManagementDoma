@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import jp.co.flm.dao.MemberDao;
 import jp.co.flm.entity.Member;
-import jp.co.flm.service.dto.LoginUser;
+import jp.co.flm.service.dto.LoginUserDetails;
 
 /**
  * MemberinfoServiceクラス
@@ -38,7 +38,8 @@ public class MemberinfoService implements UserDetailsService{
 		if(member==null) {
 			throw new UsernameNotFoundException(username + "not found");
 		}
-		return new LoginUser(member);
+		//return new LoginUser(member);
+		return new LoginUserDetails(member);
 	}
 
 }

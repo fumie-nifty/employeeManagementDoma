@@ -9,7 +9,12 @@
 
 <body>
 	<div id="mainArea">
-		<h1>アンケート</h1>
+		<h1>アンケート
+			<div class="userName" sec:authorize="authenticated">
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
+			</div>
+
+		</h1>
 		<h2>アンケート入力画面</h2>
 		<form method="post" th:action="@{/questionaryInput}"
 											th:object="${questionaryForm}"

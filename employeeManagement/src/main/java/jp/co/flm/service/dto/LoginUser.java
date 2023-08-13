@@ -23,26 +23,38 @@ public class LoginUser extends User {
 	/**
 	 * 画面表示用メンバー名
 	 */
-	private String username;
+	private String memberName;
 	
+	/**
+	 * @param member
+	 */
 	public LoginUser(Member member) {
-		super(	member.getMemberId(),	//username - ユーザ名
-				member.getPassword(),	//username - パスワード
-				true,					//enabled - ユーザーが有効になっている場合は true に設定
-				true,					//accountNonExpired - アカウントの有効期限が切れていない場合は true に設定
-				true,					//credentialsNonExpired - 資格情報の有効期限が切れていない場合は、true に設定されます
-				true,					//accountNonLocked - アカウントがロックされていない場合は true に設定
-				new ArrayList<GrantedAuthority>()	// 正しいユーザー名とパスワードを提示し、ユーザーが有効になっている場合に呼び出し元に付与する必要がある権限
+		/**
+		 * username - ユーザ名
+		 * username - パスワード
+		 * enabled - ユーザーが有効になっている場合は true に設定
+		 * accountNonExpired - アカウントの有効期限が切れていない場合は true に設定
+		 * credentialsNonExpired - 資格情報（パスワード）の有効期限が切れていない場合は、true に設定されます
+		 * accountNonLocked - アカウントがロックされていない場合は true に設定
+		 * authorities - 権限リスト
+		 */
+		super(	member.getMemberId(),				//username
+				member.getPassword(),				//username
+				true,								//enabled
+				true,								//accountNonExpired
+				true,								//credentialsNonExpired
+				true,								//accountNonLocked
+				new ArrayList<GrantedAuthority>()	// authorities
 				);
-		username = member.getMemberName();
+		memberName = member.getMemberName();
 	}
 
-	public String getUsername() {
-		return username;
+	public String getMemberName() {
+		return memberName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 	

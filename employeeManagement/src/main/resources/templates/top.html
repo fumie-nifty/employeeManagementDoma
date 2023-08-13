@@ -12,7 +12,7 @@
 	<div id="mainArea">
 		<h1>例題一覧
 			<div class="userName" sec:authorize="authenticated">
-				ユーザ名：<span sec:authentication="principal.username">ユーザ名</span>
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
 			</div>
 			<div class="userName" sec:authorize="anonymous">
 				<a th:href="@{/login}" class="login_top">ログイン</a>
