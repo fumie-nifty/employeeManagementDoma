@@ -1,0 +1,47 @@
+<!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>送信結果画面</title>
+</head>
+<body>
+	<div id="mainArea">
+		<h1>送信結果
+			<div class="userName" sec:authorize="authenticated">
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
+			</div>
+		</h1>
+		<h2>送信結果画面</h2>
+		<p>以下のメッセージを送信しました。</p>
+		<table border="1" th:object="${teamsMessageForm}">
+			<tr>
+				<th>アカウント</th>
+				<td th:text="*{userId}">アカウント</td>
+			</tr>
+			<tr>
+				<th>アカウント名</th>
+				<td th:text="*{userName}">アカウント名</td>
+			</tr>
+			<tr>
+				<th>メッセージタイトル</th>
+				<td th:text="*{title}">メッセージタイトル</td>
+			</tr>
+			<tr>
+				<th>メッセージ</th>
+				<td th:text="*{message}">メッセージ</td>
+			</tr>
+			<tr>
+				<th>リンクURL</th>
+				<td th:text="*{href}">phone</td>
+			</tr>
+		</table>
+		<br>
+		<a th:href="@{/messageInput}">[戻る]</a>
+	</div>
+	<div id="footerArea" >
+		<a th:href="@{/}">[トップに戻る]</a>
+	</div>
+</body>
+</html>

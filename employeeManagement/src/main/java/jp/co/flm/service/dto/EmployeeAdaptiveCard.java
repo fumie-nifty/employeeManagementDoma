@@ -1,3 +1,7 @@
+/**
+ * EmployeeAdaptiveCard.java
+ * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
+ */
 package jp.co.flm.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -5,18 +9,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jp.co.flm.service.dto.teams.Body;
 import jp.co.flm.service.dto.teams.Msteams;
 
+/**
+ * アダプティブカード作成クラス
+ * @author kuga
+ * @version 1.0 2023/08/13
+ */
 public class EmployeeAdaptiveCard {
 
+	/**
+	 * @param userId	TeamsユーザーID
+	 * @param userName	ユーザー名
+	 * @param title		メッセージタイトル
+	 * @param message	メッセージ本文
+	 * @param href		アンケートURL
+	 */
 	public EmployeeAdaptiveCard(String userId,
 								String userName,
 								String title,
-								String message) {
-		
+								String message,
+								String href) {
+		//メンションユーザーの登録
 		this.attachments[0].content.msteams= new Msteams(userId, userName);
-		Body[] body =  new Body[3];
-		body[0]= new Body("TextBlock",title);
-		body[1]= new Body("TextBlock","<at>teams</at>さん");
-		body[2]= new Body("TextBlock",message);
+		//本文作成
+		Body[] body =  {
+				new Body("TextBlock",title,"Medium","Bolder"),	//タイトル
+				new Body("TextBlock","<at>teams</at>さん"),		//メンション
+				new Body("TextBlock",message),					//メッセージ本文
+				new Body("TextBlock","[アンケート参照](" + href + ")")	//ハイパーリンク
+				};
+		//カードに本文登録
 		this.attachments[0].content.body =body;
 		
 
