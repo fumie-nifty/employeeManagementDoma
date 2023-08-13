@@ -28,6 +28,7 @@ import jp.co.flm.common.exception.BusinessException;
 import jp.co.flm.entity.Employee;
 import jp.co.flm.form.EmployeeIdForm;
 import jp.co.flm.service.SearchEmpService;
+import jp.co.flm.service.dto.EmployeeAdaptiveCard;
 import jp.co.flm.service.dto.LoginUser;
 
 /**
@@ -85,7 +86,7 @@ public class SearchEmpController {
 		String message = employeeId.toString() + "の検索に成功しました。";
 
 		//Teamsに結果通知
-		//this.sendTeamsKuga(title,message);
+		this.sendTeamsKuga(title,message);
 		String url = 
 				"https://esq365.webhook.office.com/webhookb2/f23d105d-72e9-4b35-8c8d-707d946a1de4@fccbe2bf-88de-49c4-af92-1e9500cb29a4/IncomingWebhook/a4e12f85f334436eac1b46217a8545d8/2a42f0dd-1fb2-41a3-91e0-4afb29a27b7a";
 		String id = "xkuga.fumie@contract.isid.co.jp";
@@ -175,17 +176,23 @@ public class SearchEmpController {
 		incoming.title = titel;
 		incoming.text = message;
 		try {
+			String userId = "xkuga.fumie@contract.isid.co.jp";
+			String userName = "久賀";
+			String title = "タイトル名";
+			String mesg ="メッセージ文";
 
 			// 送信データを JSONテキスト化
+			EmployeeAdaptiveCard adaptiveCard = new EmployeeAdaptiveCard(userId,userName,title ,mesg);
+			
 			final ObjectMapper mapper = new ObjectMapper();
-			String incomingJson;
-			incomingJson = mapper.writeValueAsString(incoming);
+			String incomingJson = mapper.writeValueAsString(incoming);
+			String adaptiveJson = mapper.writeValueAsString(adaptiveCard);
 			
 			//リクエスト情報作成
 			RequestEntity<?> req = RequestEntity 
 					.post(URI.create(url)) 
 					.contentType(MediaType.APPLICATION_JSON) 
-					.body(incomingJson);
+					.body(adaptiveJson);
 
 			// API 呼び出し
 			restTemplate.exchange(req, String.class);
