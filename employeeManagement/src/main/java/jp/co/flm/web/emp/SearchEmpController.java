@@ -10,13 +10,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,7 +25,6 @@ import jp.co.flm.entity.Employee;
 import jp.co.flm.form.EmployeeIdForm;
 import jp.co.flm.service.SearchEmpService;
 import jp.co.flm.service.dto.EmployeeAdaptiveCard;
-import jp.co.flm.service.dto.LoginUser;
 import jp.co.flm.web.WebHookClient;
 
 /**
@@ -48,14 +45,14 @@ public class SearchEmpController {
 	@Autowired
 	WebHookClient webHookClient;
 
-	@ModelAttribute(name = "LOGINUSER")
-	public String setLoginUser(@AuthenticationPrincipal LoginUser loginUser) {
-		String result = null;
-		if (loginUser != null) {
-			result = loginUser.getUsername();
-		}
-		return result;
-	}
+//	@ModelAttribute(name = "LOGINUSER")
+//	public String setLoginUser(@AuthenticationPrincipal LoginUser loginUser) {
+//		String result = null;
+//		if (loginUser != null) {
+//			result = loginUser.getUsername();
+//		}
+//		return result;
+//	}
 
 	@RequestMapping("/search")
 	public String search(Model model) {

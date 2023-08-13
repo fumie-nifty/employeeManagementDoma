@@ -1,0 +1,88 @@
+<!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>メッセージ入力画面</title>
+</head>
+<body>
+	<div id="mainArea">
+		<h1>メッセージ入力
+			<div class="userName" sec:authorize="authenticated">
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
+			</div>
+		</h1>
+		<h2>メッセージ入力画面</h2>
+		<p th:text="${message}" class="errorMsg">
+			error message
+		</p>
+		<form method="post" th:action="@{/sendMessage}"
+														th:object="${teamsMessageForm}">
+			<table border="1">
+				<tr>
+					<th>アカウント</th>
+					<td>
+						<input type="text" name="userId" size="40"
+							value="xkuga.fumie@contract.isid.co.jp">
+						<div th:if="${#fields.hasErrors('userId')}"
+										th:errors="*{userId}" class="errorMsg">
+							validation massage
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>アカウント名</th>
+					<td>
+						<input type="text" name="userName" size="40"
+							value="久賀">
+						<div th:if="${#fields.hasErrors('userName')}"
+										th:errors="*{userName}" class="errorMsg">
+							validation massage
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>メッセージタイトル</th>
+					<td>
+						<input type="text" name="title" size="40"
+							value="">
+						<div th:if="${#fields.hasErrors('title')}"
+										th:errors="*{title}" class="errorMsg">
+							validation massage
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>メッセージ</th>
+					<td>
+						<input type="text" name="message" size="40"
+							value="">
+						<div th:if="${#fields.hasErrors('message')}"
+										th:errors="*{message}" class="errorMsg">
+							validation massage
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>リンクURL</th>
+					<td>
+						<input type="text" name="href" size="40"
+							value="http://localhost:8080/">
+						<div th:if="${#fields.hasErrors('href')}"
+										th:errors="*{href}" class="errorMsg">
+							validation massage
+						</div>				
+					</td>
+				</tr>
+			</table>
+
+			<br>
+			<button type="submit">送信</button>
+		</form>
+	</div>
+	<div id="footerArea" >
+		<a th:href="@{/}">[トップに戻る]</a>
+	</div>
+</body>
+</html>
