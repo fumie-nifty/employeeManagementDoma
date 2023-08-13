@@ -1,3 +1,7 @@
+/**
+ * Body.java
+ * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
+ */
 package jp.co.flm.service.dto.teams;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -5,6 +9,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+/**
+ * アダプティブカードの本文クラス
+ * @author kuga
+ * @version 1.0 2023/08/13
+ */
 @Data
 @AllArgsConstructor
 public class Body {
