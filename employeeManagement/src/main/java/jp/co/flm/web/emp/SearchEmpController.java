@@ -82,12 +82,12 @@ public class SearchEmpController {
 		model.addAttribute("employee", employee);
 		
 
-		String userId = "xkuga.fumie@contract.isid.co.jp";
-		String userName = "久賀";
-		String title = "クラス化テスト";
-		String message ="あああああああああああああああああ";
-		String href = "http://localhost:8080/";
-		webHookClient.sendTeams(userId, userName, title, message, href);
+//		String userId = "xkuga.fumie@contract.isid.co.jp";
+//		String userName = "久賀";
+//		String title = "クラス化テスト";
+//		String message ="あああああああああああああああああ";
+//		String href = "http://localhost:8080/";
+//		webHookClient.sendTeams(userId, userName, title, message, href);
 
 
 		return "/retrieve-employee";
@@ -110,7 +110,7 @@ public class SearchEmpController {
 	}
 	
 	/**
-	 * Teams送信べた書き
+	 * Teams送信べた書き(削除予定メソッド）
 	 * @param title
 	 * @param message
 	 * @return
