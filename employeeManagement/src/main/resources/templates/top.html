@@ -12,7 +12,7 @@
 	<div id="mainArea">
 		<h1>例題一覧
 			<div class="userName" sec:authorize="authenticated">
-				ユーザ名：<span sec:authentication="principal.username">ユーザ名</span>
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
 			</div>
 			<div class="userName" sec:authorize="anonymous">
 				<a th:href="@{/login}" class="login_top">ログイン</a>
@@ -21,9 +21,8 @@
 		<h3 sec:authorize="authenticated">
 			ようこそ <span sec:authentication="principal.username">ユーザ名</span> さん
 		</h3>
-		<p><a  th:href="@{/search}">従業員検索</a></p>
-		<p><a  th:href="@{/inputInsert}">従業員登録</a></p>
-		<p><a th:href="@{/retrieveAllEmployee}">従業員一覧</a></p>
+		<p><a th:href="@{/search}">従業員検索</a></p>
+		<p><a th:href="@{/messageInput}">メッセージ送信</a></p>
 		<br>
 	</p>
 	</div>
