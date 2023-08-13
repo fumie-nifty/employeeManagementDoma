@@ -180,9 +180,10 @@ public class SearchEmpController {
 			String userName = "久賀";
 			String title = "タイトル名";
 			String mesg ="メッセージ文";
+			String href = "http://localhost:8080/";
 
 			// 送信データを JSONテキスト化
-			EmployeeAdaptiveCard adaptiveCard = new EmployeeAdaptiveCard(userId,userName,title ,mesg);
+			EmployeeAdaptiveCard adaptiveCard = new EmployeeAdaptiveCard(userId,userName,title ,mesg,href);
 			
 			final ObjectMapper mapper = new ObjectMapper();
 			String incomingJson = mapper.writeValueAsString(incoming);

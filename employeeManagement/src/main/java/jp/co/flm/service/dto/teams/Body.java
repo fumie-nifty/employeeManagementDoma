@@ -14,4 +14,15 @@ public class Body {
 		@JsonProperty("text")
 		private String text;
 
+		@JsonProperty("size")
+		private String size;
+
+		@JsonProperty("weight")
+		private String weight;
+		
+		public Body(String type,String text) {
+			this.type= type;
+			this.text =text;
+		}
+
 }
