@@ -48,4 +48,9 @@ public class WebHookConfigulation {
 		
 		return restTemplate;
 	}
+	
+	@Bean
+	public WebHookClient webHookClient() {
+		return new WebHookClient();
+	}
 }
