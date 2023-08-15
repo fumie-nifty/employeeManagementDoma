@@ -1,4 +1,8 @@
-package jp.co.flm.web;
+/**
+ * WebHookConfigulation.java
+ * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
+ */
+package jp.co.flm.conf;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -12,6 +16,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import jp.co.flm.web.WebHookClient;
+
+/**
+ * WebHookConfigulationコンフィグレーションクラス
+ * 以下のクラスをDIコンテナに登録
+ *   ・RestTemplate
+ *   ・WebHookClient
+ * @author kuga
+ * @version 1.0 2023/08/15
+ */
 @Configuration
 public class WebHookConfigulation {
 	

@@ -10,7 +10,7 @@ import java.util.List;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
 
-import jp.co.flm.ConfigAutowireable;
+import jp.co.flm.conf.ConfigAutowireable;
 import jp.co.flm.entity.Employee;
 
 /**
