@@ -26,7 +26,6 @@ import jp.co.flm.service.MemberinfoService;
 @EnableWebSecurity
 public class WebSecurityConfig {
 	
-
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
