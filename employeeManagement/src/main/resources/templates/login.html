@@ -13,8 +13,10 @@
 
 		<form method="post" th:action="@{/login}">
 			<p>ユーザーIDとパスワードを入力してください。</p>
-			<p th:if="${param.error}" class="errorMsg">
-				認証に失敗しました。正しいユーザーIDおよびパスワードを入力してください。
+			<p 	th:if="${param.error}"
+				th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+				class="errorMsg">
+				認証エラーメッセージ表示
 			</p>
 			<p th:if="${param.logout}">ログアウトしました。</p>
 			<table>
