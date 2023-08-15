@@ -2,7 +2,7 @@
  * ConfigAutowireable.java
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
-package jp.co.flm;
+package jp.co.flm.conf;
 
 import org.seasar.doma.AnnotateWith;
 import org.seasar.doma.Annotation;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * ConfigAutowireable
+ * DaoインターフェースをDIコンテナで管理するためのアノテーションを定義するクラス
  * @author kuga
  * @version 1.0 2023/07/12
  */

@@ -2,7 +2,7 @@
  * SearchEmpController.java
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
-package jp.co.flm.web.emp;
+package jp.co.flm.web.controller;
 
 import java.net.URI;
 import java.util.List;

@@ -2,7 +2,7 @@
  * DataSourceConfiguration.java
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
-package jp.co.flm;
+package jp.co.flm.conf;
 
 import javax.sql.DataSource;
 
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * DataSourceConfigurationコンフィグレーションクラス
- * MySQL接続設定
+ * SpringとDomaを連携するためのデータベース設定クラス
  * @author kuga
  * @version 1.0 2023/07/12
  */
