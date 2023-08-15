@@ -1,3 +1,7 @@
+/**
+ * WebHookClient.java
+ * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
+ */
 package jp.co.flm.web;
 
 import java.net.URI;
@@ -9,6 +13,12 @@ import org.springframework.web.client.RestTemplate;
 
 import jp.co.flm.service.TeamsMessageService;
 
+/**
+ * WebHookClientクラス
+ * WebHook（REST API）を呼出すREST APIクライアントクラス
+ * @author kuga
+ * @version 1.0 2023/07/12
+ */
 public class WebHookClient {
 
 	@Autowired

@@ -2,7 +2,7 @@
  * WebSecurityConfig.java
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
-package jp.co.flm.web;
+package jp.co.flm.conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,11 +31,11 @@ public class WebSecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
 		//URLごとの認可の設定
-		http.authorizeHttpRequests()							//URL毎の認可設定の開始
-			.antMatchers("/images/**","/css/**","/script/*","/")
-										.permitAll()			//image、css、JavaScriptは未ログイン時でもアクセス可能
-			.anyRequest().authenticated();						//その他のURLはログイン後のみアクセス可能
-		
+		http.authorizeHttpRequests()										//URL毎の認可設定の開始
+			.antMatchers("/images/**","/css/**","/script/*").permitAll()	//image、css、JavaScriptは未ログイン時でもアクセス可能
+			.antMatchers("/").permitAll()									//トップ画面は未ログイン時でもアクセス可能
+			.anyRequest().authenticated();									//その他のURLはログイン後のみアクセス可能
+
 		//フォーム認証の設定
 		http.formLogin()
 			.loginPage("/login")					//ログイン画面URL
