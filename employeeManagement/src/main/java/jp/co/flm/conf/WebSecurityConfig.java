@@ -49,23 +49,31 @@ public class WebSecurityConfig {
 		
 		//ログアウトの設定
 		http.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))	//GETの場合
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))		//GETの場合
 			//.logoutUrl("/logout")												//POSTの場合
 			.permitAll();
 		
 		return http.build();
 	}
 	
+	
+	/**
+	 * ログイン処理の設定
+	 * @author kuga
+	 * @version 1.0 2023/08/12
+	 */
 	@Configuration
 	protected static class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter{
 		
 		@Autowired
 		private MemberinfoService memberinfoService;
-		
+
 		@Override
 		public void init(AuthenticationManagerBuilder auth) throws Exception{
 			auth.userDetailsService(memberinfoService)				//ユーザー認証するサービスの設定
 				.passwordEncoder(new Argon2PasswordEncoder());		//ハッシュ関数の登録
 		}
 	}
+	
+	
 }

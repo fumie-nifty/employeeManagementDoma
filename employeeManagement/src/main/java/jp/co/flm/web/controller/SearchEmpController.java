@@ -45,6 +45,12 @@ public class SearchEmpController {
 	@Autowired
 	WebHookClient webHookClient;
 
+	/**
+	 * 従業員検索画面表示
+	 * url：/search
+	 * 遷移先HTML:retrieve-input.html
+	 * @return
+	 */
 	@RequestMapping("/search")
 	public String search(Model model) {
 
@@ -54,7 +60,14 @@ public class SearchEmpController {
 		return "/retrieve-input";
 	}
 
-	@RequestMapping(value = "/retrieveEmployee", params = "employeeId")
+	/**
+	 * 従業員検索
+	 * url：/retrieveEmployee
+	 * 遷移先HTML:検索結果有→retrieve-employee.html
+	 *            検索結果無→retrieve-input.html
+	 * @return
+	 */
+	@RequestMapping(value = "/retrieveEmployee")
 	public String retrieveReqParam(@Validated EmployeeIdForm form,
 			BindingResult result,
 			Model model) {

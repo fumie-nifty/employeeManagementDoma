@@ -6,6 +6,7 @@ package jp.co.flm.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * TopControllerクラス
@@ -15,34 +16,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TopController {
 	
-	
-	/**
-	 * 画面で表示するログインユーザー名（LOGINUSER）をModelに格納する
-	 * @param loginUser 認証済みユーザー情報
-	 * @return
-	 */
-//	@ModelAttribute(name = "LOGINUSER")
-//	public String setLoginUser(@AuthenticationPrincipal LoginUser loginUser) {
-//		String result = null;
-//		if(loginUser!=null) {
-//			result=loginUser.getUsername();
-//		}
-//		return result;
-//	}
-	
-	
 	/**
 	 * ログイン画面表示
 	 * url：/login
-	 * 遷移先HTML:
+	 * 遷移先HTML:login.html
 	 * @return
 	 */
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login",method = RequestMethod.GET)
 	public String login() {
 		return "/login";
 	}
 
 	
+	/**
+	 * トップ画面表示
+	 * url：/
+	 * 遷移先HTML:top.html
+	 * @return
+	 */
 	@RequestMapping("/")
 	public String handler() {
 		
