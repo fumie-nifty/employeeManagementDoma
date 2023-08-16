@@ -30,7 +30,7 @@ public class TeamsMessageController {
 	WebHookClient webHookClient;
 
 	@RequestMapping("/messageInput")
-	public String search(Model model) {
+	public String messageInput(Model model) {
 
 		// フォームオブジェクトをModelに設定
 		model.addAttribute("teamsMessageForm", new TeamsMessageForm());
@@ -39,7 +39,7 @@ public class TeamsMessageController {
 	}
 
 	@RequestMapping(value = "/sendMessage")
-	public String retrieveReqParam(@Validated TeamsMessageForm form,
+	public String sendMessage(@Validated TeamsMessageForm form,
 			BindingResult result,
 			Model model) {
 		
