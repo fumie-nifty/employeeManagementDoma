@@ -1,5 +1,5 @@
 /**
- * Employee.java
+ * TeamsMessageForm.java
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
 package jp.co.flm.form;
