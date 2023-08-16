@@ -4,18 +4,14 @@
  */
 package jp.co.flm.conf;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import jp.co.flm.service.MemberinfoService;
 
 /**
  * SpringSecurityコンフィグレーションクラス
@@ -29,6 +25,7 @@ public class WebSecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
+				
 		//URLごとの認可の設定
 		http.authorizeHttpRequests()										//URL毎の認可設定の開始
 			.antMatchers("/images/**","/css/**","/script/*").permitAll()	//image、css、JavaScriptは未ログイン時でもアクセス可能
@@ -49,23 +46,40 @@ public class WebSecurityConfig {
 		
 		//ログアウトの設定
 		http.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))	//GETの場合
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))		//GETの場合
 			//.logoutUrl("/logout")												//POSTの場合
 			.permitAll();
-		
+			
 		return http.build();
 	}
 	
-	@Configuration
-	protected static class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter{
-		
-		@Autowired
-		private MemberinfoService memberinfoService;
-		
-		@Override
-		public void init(AuthenticationManagerBuilder auth) throws Exception{
-			auth.userDetailsService(memberinfoService)				//ユーザー認証するサービスの設定
-				.passwordEncoder(new Argon2PasswordEncoder());		//ハッシュ関数の登録
-		}
-	}
+	/**
+	 * PasswordEncoderの登録
+	 * @author kuga
+	 * @version 1.0 2023/08/12
+	 */
+	 @Bean    
+	 PasswordEncoder passwordEncoder() {
+		 return new Argon2PasswordEncoder();
+	 }
+	 
+	/**
+	 * ログイン処理のカスタマイズ
+	 * @author kuga
+	 * @version 1.0 2023/08/12
+	 */
+//	@Configuration
+//	protected static class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter{
+//		
+//		@Autowired
+//		private MemberinfoService memberinfoService;
+//
+//		@Override
+//		public void init(AuthenticationManagerBuilder auth) throws Exception{
+//			auth.userDetailsService(memberinfoService)				//ユーザー認証するサービスの設定
+//				.passwordEncoder(new Argon2PasswordEncoder());		//ハッシュ関数の登録
+//		}
+//	}
+	
+	
 }
