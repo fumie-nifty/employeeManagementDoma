@@ -13,7 +13,7 @@ import jp.co.flm.entity.Member;
 
 /**
  * LoginUserクラス
- * 認証情報（認証対象のユーザ情報）を格納するDTO
+ * 認証情報（認証対象のユーザ情報）を格納するDTO（使用とりやめ）
  * @author kuga
  * @version 1.0 2023/07/12
  */
