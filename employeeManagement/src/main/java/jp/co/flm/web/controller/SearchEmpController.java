@@ -68,7 +68,7 @@ public class SearchEmpController {
 	 * @return
 	 */
 	@RequestMapping(value = "/retrieveEmployee")
-	public String retrieveReqParam(@Validated EmployeeIdForm form,
+	public String retrieveEmployee(@Validated EmployeeIdForm form,
 			BindingResult result,
 			Model model) {
 
