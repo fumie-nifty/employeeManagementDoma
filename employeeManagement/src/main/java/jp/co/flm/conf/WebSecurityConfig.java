@@ -26,7 +26,6 @@ import jp.co.flm.service.MemberinfoService;
 @EnableWebSecurity
 public class WebSecurityConfig {
 	
-
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
@@ -51,7 +50,7 @@ public class WebSecurityConfig {
 		//ログアウトの設定
 		http.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))	//GETの場合
-			//.logoutUrl("")												//POSTの場合
+			//.logoutUrl("/logout")												//POSTの場合
 			.permitAll();
 		
 		return http.build();

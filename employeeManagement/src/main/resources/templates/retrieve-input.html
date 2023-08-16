@@ -18,7 +18,7 @@
 		<p th:text="${message}" class="errorMsg">
 			error message
 		</p>
-		<form method="get" action="#" th:action="@{/retrieveEmployee}"
+		<form method="post" th:action="@{/retrieveEmployee}"
 														th:object="${employeeIdForm}">
 			<input type="text"  maxlength="6" th:field="*{employeeId}" >
 			<div th:if="${#fields.hasErrors('employeeId')}"
