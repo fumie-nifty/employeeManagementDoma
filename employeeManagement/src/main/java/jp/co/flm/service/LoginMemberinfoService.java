@@ -1,5 +1,5 @@
 /**
- * MemberinfoService.java
+ * LoginMemberinfoService.java
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
 package jp.co.flm.service;
@@ -15,18 +15,18 @@ import jp.co.flm.entity.Member;
 import jp.co.flm.service.dto.LoginUserDetails;
 
 /**
- * MemberinfoServiceクラス
+ * LoginMemberinfoServiceクラス
  * ユーザ情報を取得し認証情報を作成するサービス
  * @author kuga
  * @version 1.0 2023/07/12
  */
 @Service
-public class MemberinfoService implements UserDetailsService{
+public class LoginMemberinfoService implements UserDetailsService{
 	
 	private final MemberDao memberDao;
 	
 	@Autowired
-	public MemberinfoService(MemberDao memberDao) {
+	public LoginMemberinfoService(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
 
