@@ -25,7 +25,9 @@ public interface EmployeeDao {
 	@Select
 	List<Employee> selectAll();
 	
-	@Select
+	//検索結果の保証
+	//該当がない場合org.seasar.doma.jdbc.ResultMappingExceptionがスローされる。
+	@Select(ensureResult = true)
 	Employee selectById(Integer employeeId);
 	
 	
