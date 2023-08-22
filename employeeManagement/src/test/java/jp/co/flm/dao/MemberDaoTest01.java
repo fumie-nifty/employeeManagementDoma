@@ -12,8 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import jp.co.flm.entity.Member;
 
 /**
- * @author FLM
- * @version 1.0 yyyy/mm/dd
+ * @author kuga
+ * @version 1.0 2023/07/12
+ * hamcrest
  */
 @SpringBootTest
 @DisplayName("PT001_01:MemberDaoのテスト")

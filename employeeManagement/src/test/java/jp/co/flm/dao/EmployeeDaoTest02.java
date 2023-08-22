@@ -14,8 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import jp.co.flm.entity.Employee;
 
 /**
- * @author FLM
- * @version 1.0 yyyy/mm/dd
+ * @author kuga
+ * @version 1.0 2023/08/22
+ * hamcrest
  */
 @SpringBootTest
 @DisplayName("PT001_01:EmployeeDaoのテスト")
