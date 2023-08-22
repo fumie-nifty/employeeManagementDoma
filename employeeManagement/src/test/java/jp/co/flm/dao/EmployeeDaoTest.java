@@ -27,8 +27,9 @@ import jp.co.flm.entity.Employee;
 import jp.co.flm.test.util.ExecuteQueryForTestService;
 
 /**
- * @author FLM
- * @version 1.0 yyyy/mm/dd
+ * @author kuga
+ * @version 1.0 2023/07/12
+ * DbUnit、assertj
  */
 @SpringBootTest
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
