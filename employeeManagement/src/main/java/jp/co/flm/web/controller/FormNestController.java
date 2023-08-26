@@ -13,9 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.flm.form.ChoiceForm;
-import jp.co.flm.form.EnqueteForm;
 import jp.co.flm.form.QuestionAnsForm;
+import jp.co.flm.form.QuestionAnswerForm;
+import jp.co.flm.viewModel.EnqueteAnsViewModel;
+import jp.co.flm.viewModel.QuestionAnsViwModel;
 
 /**
  * FormMultipleSubmitControllerクラス
@@ -28,81 +29,82 @@ public class FormNestController {
 	@RequestMapping("/nestInput")
 	public String nestInput(Model model) {
 
-		EnqueteForm enqueteForm = new EnqueteForm();
-		enqueteForm.setEnquete_id(10);
-		enqueteForm.setEnquete_name("入社後の様子");
-
-		List<QuestionAnsForm> questionAnsFormList = new ArrayList<QuestionAnsForm>();
+		//アンケート回答入力用
+		QuestionAnswerForm questionAnswerForm = new QuestionAnswerForm();
+		List<QuestionAnsForm> qeuestionAnsFormListInput = new ArrayList<QuestionAnsForm>();
 		QuestionAnsForm questionAnsForm = null;
-		List<ChoiceForm> choiceFormList = null;
-		//List<Integer> answer_choice_id_List = null;
+ 
+		//アンケート回答表示用
+		EnqueteAnsViewModel enqueteAnsViewModel = new EnqueteAnsViewModel();
+		List<QuestionAnsViwModel> questionAnsViwModelList = new ArrayList<QuestionAnsViwModel>();
 		Map<Integer,String> choiceMap = null;
+		QuestionAnsViwModel questionAnsViwModel = null;
+		
+		//アンケート回答表示用　データの設定
+		enqueteAnsViewModel.setEnquete_id(10);
+		enqueteAnsViewModel.setEnquete_name("入社後の様子");
 
-		//テキスト回答用
+		//単一テキスト入力
 		questionAnsForm = new QuestionAnsForm();
 		questionAnsForm.setQuestion_id(1);
-		questionAnsForm.setQuestion_number(1);
-		questionAnsForm.setQuestion_type_id(1);
-		questionAnsForm.setRequire_flag(1);
-		questionAnsForm.setQuestion_text("質問ａ");
-
-		questionAnsFormList.add(questionAnsForm);
+		qeuestionAnsFormListInput.add(questionAnsForm);
+		questionAnsViwModel = new QuestionAnsViwModel();
+		questionAnsViwModel.setQuestion_id(1);
+		questionAnsViwModel.setQuestion_number(1);
+		questionAnsViwModel.setRequire_flag(1);
+		questionAnsViwModel.setQuestion_text("質問ａ");
+		questionAnsViwModel.setQuestion_type_id(1);
+		questionAnsViwModelList.add(questionAnsViwModel);
 
 		//単一選択
 		questionAnsForm = new QuestionAnsForm();
 		questionAnsForm.setQuestion_id(2);
-		questionAnsForm.setQuestion_number(2);
-		questionAnsForm.setQuestion_type_id(2);
-		questionAnsForm.setRequire_flag(1);
-		questionAnsForm.setQuestion_text("質問ｂ");
+		qeuestionAnsFormListInput.add(questionAnsForm);
+		questionAnsViwModel = new QuestionAnsViwModel();
+		questionAnsViwModel.setQuestion_id(2);
+		questionAnsViwModel.setQuestion_number(2);
+		questionAnsViwModel.setQuestion_type_id(2);
+		questionAnsViwModel.setRequire_flag(1);
+		questionAnsViwModel.setQuestion_text("質問ｂ");
 		choiceMap = new HashMap<>();
 		choiceMap.put(1, "選択１");
 		choiceMap.put(2, "選択２");
 		choiceMap.put(3, "選択３");
-//		choiceFormList = new ArrayList<ChoiceForm>();
-//		choiceFormList.add(new ChoiceForm(1, 2, 1, "選択１"));
-//		choiceFormList.add(new ChoiceForm(2, 2, 2, "選択２"));
-//		choiceFormList.add(new ChoiceForm(3, 2, 3, "選択３"));
-//		questionAnsForm.setChoiceFormList(choiceFormList);
-//		answer_choice_id_List = new ArrayList<AnswerChoiceIdListForm>();
-//		questionAnsForm.setAnswer_choice_id_List(answer_choice_id_List);
-
-		questionAnsFormList.add(questionAnsForm);
+		questionAnsViwModel.setChoiceMap(choiceMap);
+		questionAnsViwModelList.add(questionAnsViwModel);
 
 		//複数選択
 		questionAnsForm = new QuestionAnsForm();
 		questionAnsForm.setQuestion_id(3);
-		questionAnsForm.setQuestion_number(3);
-		questionAnsForm.setQuestion_type_id(3);
-		questionAnsForm.setRequire_flag(1);
-		questionAnsForm.setQuestion_text("質問ｃ");
+		qeuestionAnsFormListInput.add(questionAnsForm);
+		questionAnsViwModel = new QuestionAnsViwModel();
+		questionAnsViwModel.setQuestion_id(3);
+		questionAnsViwModel.setQuestion_number(3);
+		questionAnsViwModel.setQuestion_type_id(3);
+		questionAnsViwModel.setRequire_flag(1);
+		questionAnsViwModel.setQuestion_text("質問ｃ");
 		choiceMap = new HashMap<>();
-		choiceMap.put(4,  "選択Ａ");
+		choiceMap.put(4, "選択Ａ");
 		choiceMap.put(5, "選択Ｂ");
 		choiceMap.put(6, "選択Ｃ");
-		
-		
-//		choiceFormList = new ArrayList<ChoiceForm>();
-//		choiceFormList.add(new ChoiceForm(1, 2, 1, "選択Ａ"));
-//		choiceFormList.add(new ChoiceForm(2, 2, 2, "選択Ｂ"));
-//		choiceFormList.add(new ChoiceForm(3, 2, 3, "選択Ｃ"));
-		questionAnsForm.setChoiceMap(choiceMap);
-		//answer_choice_id_List = new ArrayList<Integer>();
-		//questionAnsForm.setAnswer_choice_id_List(answer_choice_id_List);
+		questionAnsViwModel.setChoiceMap(choiceMap);
+		questionAnsViwModelList.add(questionAnsViwModel);
 
-		questionAnsFormList.add(questionAnsForm);
+		enqueteAnsViewModel.setQuestionAnsViwModelList(questionAnsViwModelList);
+		questionAnswerForm.setQeuestionAnsFormList(qeuestionAnsFormListInput);
 
-		enqueteForm.setQuestionAnsFormList(questionAnsFormList);
-
-		model.addAttribute("enqueteForm", enqueteForm);
+		//アンケート回答表示用
+		model.addAttribute("enqueteAnsViewModel", enqueteAnsViewModel);
+		//アンケート回答入力用
+		model.addAttribute("questionAnswerForm", questionAnswerForm);
 
 		return "questionnaire-input";
 	}
 
 	@RequestMapping("/questionaryInput")
-	public String questionaryInput(EnqueteForm form, Model model) {
+	public String questionaryInput(QuestionAnswerForm form, Model model) {
 		
-		EnqueteForm enqueteForm = form;
+		QuestionAnswerForm questionAnswerForm = form;
 		
 		return "";
 

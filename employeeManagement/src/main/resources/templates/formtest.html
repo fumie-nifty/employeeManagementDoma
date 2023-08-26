@@ -25,15 +25,15 @@
 			<p th:text="*{input01}">出力値１</p>
 			<button th:formaction="@{/input01}">検索１</button>
 			<br><br>
-			
+				<label>複数選択<br>
 			      <input type="checkbox" name="input02" th:value="1" th:text="aaaa" th:field="*{input02}"/>
 			      <input type="checkbox" name="input02" th:value="2" th:text="bbbb" th:field="*{input02}"/>
 			      <input type="checkbox" name="input02" th:value="3" th:text="cccc" th:field="*{input02}"/>
 			      <input type="checkbox" name="input02" th:value="4" th:text="dddd" th:field="*{input02}"/>
-		  
-			<input type="check"  maxlength="6" th:field="*{input02}"  value="検索値２">
-			<p th:text="*{input02}">出力値２
-			</p>
+		  		</label>
+				<label th:each="num : *{input02}">
+					<p th:text="${num}">出力値２</p>
+				</label><br>
 			<button th:formaction="@{/input02}">検索２</button>
 		</form>
 	</div>
