@@ -1,0 +1,45 @@
+<!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+	<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>フォームテスト画面</title>
+</head>
+
+<body>
+	<div id="mainArea">
+		<h1>フォームテスト
+			<div class="userName" sec:authorize="authenticated">
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
+			</div>
+		</h1>
+		<h2>フォームテスト画面</h2>
+		<p>従業員IDを入力してください</p>
+		<p th:text="${message}" class="errorMsg">
+			error message
+		</p>
+		<form th:object="${testForm}">
+			<input type="text"  maxlength="6" th:field="*{input01}" value="検索値１">
+			<p th:text="*{input01}">出力値１</p>
+			<button th:formaction="@{/input01}">検索１</button>
+			<br><br>
+			
+			      <input type="checkbox" name="input02" th:value="1" th:text="aaaa" th:field="*{input02}"/>
+			      <input type="checkbox" name="input02" th:value="2" th:text="bbbb" th:field="*{input02}"/>
+			      <input type="checkbox" name="input02" th:value="3" th:text="cccc" th:field="*{input02}"/>
+			      <input type="checkbox" name="input02" th:value="4" th:text="dddd" th:field="*{input02}"/>
+		  
+			<input type="check"  maxlength="6" th:field="*{input02}"  value="検索値２">
+			<p th:text="*{input02}">出力値２
+			</p>
+			<button th:formaction="@{/input02}">検索２</button>
+		</form>
+	</div>
+	<div id="footerArea" >
+		<a th:href="@{/}">[トップに戻る]</a>
+	</div>
+</body>
+
+</html>
