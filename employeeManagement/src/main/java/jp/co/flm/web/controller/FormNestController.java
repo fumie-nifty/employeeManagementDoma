@@ -12,6 +12,8 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import jp.co.flm.form.QuestionAnsForm;
 import jp.co.flm.form.QuestionAnswerForm;
@@ -23,6 +25,7 @@ import jp.co.flm.viewModel.QuestionAnsViwModel;
  * @author kuga
  * @version 1.0 2023/08/26
  */
+@SessionAttributes(types = EnqueteAnsViewModel.class)
 @Controller
 public class FormNestController {
 
@@ -102,11 +105,15 @@ public class FormNestController {
 	}
 
 	@RequestMapping("/questionaryInput")
-	public String questionaryInput(QuestionAnswerForm form, Model model) {
+	public String questionaryInput(QuestionAnswerForm form, Model model,SessionStatus status) {
 		
 		QuestionAnswerForm questionAnswerForm = form;
 		
-		return "";
+		model.addAttribute("questionAnswerForm", questionAnswerForm);
+		
+		status.setComplete();
+		
+		return "questionnaire-result";
 
 	}
 
