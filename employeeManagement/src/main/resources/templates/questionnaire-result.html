@@ -5,18 +5,18 @@
 <head>
 	<meta charset="utf-8">
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-	<title>アンケート入力画面</title>
+	<title>アンケート回答結果画面</title>
 </head>
 
 <body>
 	<div id="mainArea">
-		<h1>アンケート
+		<h1>アンケート回答結果
 			<div class="userName" sec:authorize="authenticated">
 				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
 			</div>
 
 		</h1>
-		<h2>アンケート入力画面</h2>
+		<h2>アンケート回答結果画面</h2>
 		<form method="post" th:action="@{/questionaryInput}"
 											th:object="${enqueteAnsViewModel}"
 											class="questionList">
@@ -27,40 +27,23 @@
 					<p class="questionTitle" th:text="${questionAnsViwModel.question_text}">最近楽しかったできごとは？１</p>
 					<!--単純入力-->
 					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==1">
- 						<input 
-	 						type="text" 
-	 						th:name="${st.count}" 
-	 						th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_text}" />
+ 						<span th:text="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_text}"></span>
 					</div>
 					<!--単一選択入力-->
 					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==2">
-						<th:block th:each="choice,sts : ${questionAnsViwModel.choiceMap}">
-							<input 
-							type="radio" 
-							th:text="${choice.value}" 
-							th:value="${choice.key}" 
-							th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}"
-							
-							>
-							
+ 						<th:block th:each="choice,sts : ${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}">
+						<span th:text="${choice}"></span>
 						</th:block>
 					</div>
 					
 					<!--複数選択入力-->
 					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==3">
-						<th:block th:each="choice,sts : ${questionAnsViwModel.choiceMap}">
-							<input 
-							type="checkbox" 
-							th:text="${choice.value}" 
-							th:value="${choice.key}" 
-							th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}"
-							>
-							
+						<th:block th:each="choice,sts : ${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}">
+							<span th:text="${choice}"></span>
 						</th:block>
 					</div>
 				</div>
 			</th:block>
-						<button type="submit">回答</button>
 
 		</form>
 	</div>
