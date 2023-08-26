@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 	<title>アンケート入力画面</title>
 </head>
 
@@ -18,31 +18,52 @@
 		</h1>
 		<h2>アンケート入力画面</h2>
 		<form method="post" th:action="@{/questionaryInput}"
-											th:object="${questionaryForm}"
+											th:object="${enqueteForm}"
 											class="questionList">
 			<input type="hidden" name="enqueteId" value="">
-			<div class="questionItem">
-				<p class="questionTitle">最近楽しかったできごとは？</p>
-				<div class="answer">
-					<input type="text" name="answerText" />
+			<p th:text="*{enquete_name}">プライベートの過ごし方</p>
+			<th:block  th:each="questionAnsForm,st : *{questionAnsFormList}">
+				<div class="questionItem">
+					<p class="questionTitle" th:text="${questionAnsForm.question_text}">最近楽しかったできごとは？１</p>
+					<!--単純入力-->
+					<div class="answer" th:if="${questionAnsForm.question_type_id}==1">
+ 						<input 
+	 						type="text" 
+	 						th:name="${st.count}" 
+	 						th:field="*{questionAnsFormList[__${st.index}__].answer_text}" />
+					</div>
+					<!--単一選択入力
+					<div class="answer" th:if="${questionAnsForm.question_type_id}==2">
+						<th:block th:each="choiceForm,sts : ${questionAnsForm.choiceMap}">
+							<input 
+							type="radio" 
+							th:text="${choiceForm.choice_text}" 
+							th:value="${choiceForm.choice_number}" 
+							th:name="${sts.count}" 
+							th:field="${enqueteForm.questionAnsFormList[__${st.index}__].choice_num}"
+							
+							>
+							
+						</th:block>
+					</div>
+					-->
+					<!--複数選択入力-->
+					<div class="answer" th:if="${questionAnsForm.question_type_id}==3">
+						<th:block th:each="choice,sts : ${questionAnsForm.choiceMap}">
+							<input 
+							type="checkbox" 
+							th:text="${choice.value}" 
+							th:value="${choice.key}" 
+							th:field="${enqueteForm.questionAnsFormList[__${st.index}__].answer_choice_id_List}"
+							
+							>
+							
+						</th:block>
+					</div>
 				</div>
-			</div>
-			<div class="questionItem">
-				<p class="questionTitle">趣味を選択してください</p>
-				<div class="answer">
-					<input type="checkbox" name="hobby" value="1">釣り
-					<input type="checkbox" name="hobby" value="2">読書
-					<input type="checkbox" name="hobby" value="3">ゲーム
-					<input type="checkbox" name="hobby" value="4">スポーツ
-				</div>
-			</div>
-			<div class="questionItem">
-				<p class="questionTitle">性別は？</p>
-				<div class="answer">
-					<input type="radio" name="answer" value="女性">女性
-					<input type="radio" name="answer" value="女性">男性
-				</div>
-			</div>
+			</th:block>
+						<button type="submit">回答</button>
+
 		</form>
 	</div>
 	<div id="footerArea">
