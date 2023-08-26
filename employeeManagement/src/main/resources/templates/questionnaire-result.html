@@ -1,0 +1,55 @@
+<!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+	<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>アンケート回答結果画面</title>
+</head>
+
+<body>
+	<div id="mainArea">
+		<h1>アンケート回答結果
+			<div class="userName" sec:authorize="authenticated">
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
+			</div>
+
+		</h1>
+		<h2>アンケート回答結果画面</h2>
+		<form method="post" th:action="@{/questionaryInput}"
+											th:object="${enqueteAnsViewModel}"
+											class="questionList">
+			<input type="hidden" name="enqueteId" value="">
+			<p th:text="*{enquete_name}">プライベートの過ごし方</p>
+			<th:block  th:each="questionAnsViwModel,st : *{questionAnsViwModelList}">
+				<div class="questionItem">
+					<p class="questionTitle" th:text="${questionAnsViwModel.question_text}">最近楽しかったできごとは？１</p>
+					<!--単純入力-->
+					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==1">
+ 						<span th:text="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_text}"></span>
+					</div>
+					<!--単一選択入力-->
+					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==2">
+ 						<th:block th:each="choice,sts : ${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}">
+						<span th:text="${choice}"></span>
+						</th:block>
+					</div>
+					
+					<!--複数選択入力-->
+					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==3">
+						<th:block th:each="choice,sts : ${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}">
+							<span th:text="${choice}"></span>
+						</th:block>
+					</div>
+				</div>
+			</th:block>
+
+		</form>
+	</div>
+	<div id="footerArea">
+		<a th:href="@{/}">[トップに戻る]</a>
+	</div>
+</body>
+
+</html>
