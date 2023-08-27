@@ -4,45 +4,68 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<title>アンケート入力画面</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>アンケート回答入力画面</title>
 </head>
 
 <body>
 	<div id="mainArea">
-		<h1>アンケート
+		
+		<h1>アンケート回答
 			<div class="userName" sec:authorize="authenticated">
 				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
 			</div>
-
 		</h1>
-		<h2>アンケート入力画面</h2>
+		
+		<h2>アンケート回答入力画面</h2>
 		<form method="post" th:action="@{/questionaryInput}"
-											th:object="${questionaryForm}"
-											class="questionList">
+				th:object="${enqueteAnsViewModel}" class="questionList">
+				
 			<input type="hidden" name="enqueteId" value="">
-			<div class="questionItem">
-				<p class="questionTitle">最近楽しかったできごとは？</p>
-				<div class="answer">
-					<input type="text" name="answerText" />
+			<p th:text="*{enquete_name}">アンケートタイトル</p>
+			
+			<!--質問のループ（開始）-->
+			<th:block  th:each="questionAnsViwModel,st : *{questionAnsViwModelList}">
+				<div class="questionItem">
+					<p class="questionTitle" th:text="${questionAnsViwModel.question_text}">質問内容</p>
+					<!--単純入力-->
+					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==1">
+ 						<input 
+	 						type="text" 
+	 						th:name="${st.count}" 
+	 						th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_text}" />
+					</div>
+					<!--単一選択入力（ラジオボタン）-->
+					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==2">
+						<!--選択肢のループ（開始）-->
+						<th:block th:each="choice,sts : ${questionAnsViwModel.choiceMap}">
+							<input 
+								type="radio" 
+								th:text="${choice.value}" 
+								th:value="${choice.key}" 
+								th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}"
+							>
+						</th:block>
+						<!--選択肢のループ（終了）-->
+					</div>
+					<!--複数選択入力（チェックボックス）-->
+					<div class="answer" th:if="${questionAnsViwModel.question_type_id}==3">
+						<!--選択肢のループ（開始）-->
+						<th:block th:each="choice,sts : ${questionAnsViwModel.choiceMap}">
+							<input 
+								type="checkbox" 
+								th:text="${choice.value}" 
+								th:value="${choice.key}" 
+								th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}"
+							>
+						</th:block>
+						<!--選択肢のループ（終了）-->
+					</div>
 				</div>
-			</div>
-			<div class="questionItem">
-				<p class="questionTitle">趣味を選択してください</p>
-				<div class="answer">
-					<input type="checkbox" name="hobby" value="1">釣り
-					<input type="checkbox" name="hobby" value="2">読書
-					<input type="checkbox" name="hobby" value="3">ゲーム
-					<input type="checkbox" name="hobby" value="4">スポーツ
-				</div>
-			</div>
-			<div class="questionItem">
-				<p class="questionTitle">性別は？</p>
-				<div class="answer">
-					<input type="radio" name="answer" value="女性">女性
-					<input type="radio" name="answer" value="女性">男性
-				</div>
-			</div>
+			</th:block>
+			<!--質問のループ（終了）-->
+			<!--送信ボタン-->
+			<button type="submit">回答</button>
 		</form>
 	</div>
 	<div id="footerArea">
