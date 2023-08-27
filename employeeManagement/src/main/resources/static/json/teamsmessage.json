@@ -1,0 +1,51 @@
+{
+	"type": "message",
+	"attachments": [
+		{
+			"contentType": "application/vnd.microsoft.card.adaptive",
+			"content": {
+				"type": "AdaptiveCard",
+				"body": [
+					{
+						"type": "TextBlock",
+						"text": "タイトル",
+						"size": "Medium",
+						"weight": "Bolder"
+					},
+					{
+						"type": "TextBlock",
+						"text": "<at>teams</at>さん",
+						"size": null,
+						"weight": null
+					},
+					{
+						"type": "TextBlock",
+						"text": "メッセージ本文",
+						"size": null,
+						"weight": null
+					},
+					{
+						"type": "TextBlock",
+						"text": "[アンケート参照](http://localhost:8080/)",
+						"size": null,
+						"weight": null
+					}
+				],
+				"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+				"version": "1.0",
+				"msteams": {
+					"entities": [
+						{
+							"type": "mention",
+							"text": "<at>teams</at>",
+							"mentioned": {
+								"id": "xkuga.fumie@contract.isid.co.jp",
+								"name": "久賀"
+							}
+						}
+					]
+				}
+			}
+		}
+	]
+}
