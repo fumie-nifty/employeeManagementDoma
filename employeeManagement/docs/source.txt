@@ -1,15 +1,15 @@
-//  doma ‚Ì gradleÝ’è‚É‚Â‚¢‚ÄA‰º‹L‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
-//      https://doma.readthedocs.io/en/2.20.0/build/i“ú–{Œê–óƒy[ƒWj
+//  doma ã® gradleè¨­å®šã«ã¤ã„ã¦ã€ä¸‹è¨˜ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
+//      https://doma.readthedocs.io/en/2.20.0/build/ï¼ˆæ—¥æœ¬èªžè¨³ãƒšãƒ¼ã‚¸ï¼‰
 
-// ƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX‚ð’è‹`‚·‚é
+// ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹ã‚’å®šç¾©ã™ã‚‹
 ext.domaResourcesDir = "${buildDir}/tmp/doma-resources"
 
-  // ---- debug—p -------------------------------------
+  // ---- debugç”¨ -------------------------------------
   //  println "processResources.destinationDir is ${processResources.destinationDir}"
   //  println "ext.domaResourcesDir            is ${ext.domaResourcesDir}"
   //  println "compileJava.destinationDir      is ${compileJava.destinationDir}"
 
-// doma‚ª’Žßˆ—‚ÅŽQÆ‚·‚éƒŠƒ\[ƒX‚ðƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ‚É’Šo
+// domaãŒæ³¨é‡ˆå‡¦ç†ã§å‚ç…§ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«æŠ½å‡º
 task extractDomaResources(type: Copy, dependsOn: processResources)  {
   from processResources.destinationDir
   include 'doma.compile.config'
@@ -18,16 +18,16 @@ task extractDomaResources(type: Copy, dependsOn: processResources)  {
   into domaResourcesDir
 }
 
-// ƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ“à‚ÌƒŠƒ\[ƒX‚ðcompileJavaƒ^ƒXƒN‚Ìo—ÍæƒfƒBƒŒƒNƒgƒŠ‚ÉƒRƒs[‚·‚é
+// ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’compileJavaã‚¿ã‚¹ã‚¯ã®å‡ºåŠ›å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚³ãƒ”ãƒ¼ã™ã‚‹
 task copyDomaResources(type: Copy, dependsOn: extractDomaResources)  {
   from domaResourcesDir
   into compileJava.destinationDir
 }
 
 compileJava {
-  // ãq‚Ìƒ^ƒXƒN‚ÉˆË‘¶‚³‚¹‚é
+  // ä¸Šè¿°ã®ã‚¿ã‚¹ã‚¯ã«ä¾å­˜ã•ã›ã‚‹
   dependsOn copyDomaResources
-  // ƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ‚ðcompileJavaƒ^ƒXƒN‚Ì“ü—ÍƒfƒBƒŒƒNƒgƒŠ‚ÉÝ’è‚·‚é
+  // ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’compileJavaã‚¿ã‚¹ã‚¯ã®å…¥åŠ›ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«è¨­å®šã™ã‚‹
   inputs.dir domaResourcesDir
   options.encoding = 'UTF-8'
 }
@@ -45,8 +45,8 @@ dependencies {
 
 eclipse {
   classpath {
-    // [DOMA4019] ‘Î‰ž
-    //   ƒ\[ƒX–ˆ‚Ìo—ÍæŽw’è‚ð‰ðœ
+    // [DOMA4019] å¯¾å¿œ
+    //   ã‚½ãƒ¼ã‚¹æ¯Žã®å‡ºåŠ›å…ˆæŒ‡å®šã‚’è§£é™¤
     file.whenMerged {
       entries.each { entry ->
         if (entry.kind == 'src' && entry.hasProperty('output')) {
@@ -58,7 +58,7 @@ eclipse {
 }
 
 eclipse.jdt.file {
-    // [JavaƒRƒ“ƒpƒCƒ‰[]->[’Žßˆ—] ‚ÌÝ’è
+    // [Javaã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ¼]->[æ³¨é‡ˆå‡¦ç†] ã®è¨­å®š
     def  eclipseAptPrefsFile = '.settings/org.eclipse.jdt.apt.core.prefs'
     file(eclipseAptPrefsFile).write """\
       |eclipse.preferences.version=1
@@ -69,7 +69,7 @@ eclipse.jdt.file {
       |""".stripMargin()
 
 
-    // [JavaƒRƒ“ƒpƒCƒ‰[]->[’Žßˆ—]->[ƒtƒ@ƒNƒgƒŠ[ƒpƒX] ‚ÌÝ’è
+    // [Javaã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ¼]->[æ³¨é‡ˆå‡¦ç†]->[ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ãƒ‘ã‚¹] ã®è¨­å®š
     def f = file(".factorypath")
     def w = new FileWriter(f)
     def jar = ""
@@ -77,11 +77,11 @@ eclipse.jdt.file {
     def xml = new groovy.xml.MarkupBuilder(w)
     xml.setDoubleQuotes(true)
     xml."factorypath"() {
-      // doma-core.jar ‚Ì“Çž‚Ý
+      // doma-core.jar ã®èª­è¾¼ã¿
       jar = configurations.annotationProcessor.find { File file -> file.name.matches('doma-core[^//]*') }
       'factorypathentry'(kind: 'EXTJAR', id: jar, enabled: true, runInBatchMode: false)
 
-      // doma-processorjar ‚Ì“Çž‚Ý
+      // doma-processorjar ã®èª­è¾¼ã¿
       jar = configurations.annotationProcessor.find { File file -> file.name.matches('doma-processor[^//]*') }
       'factorypathentry'(kind: 'EXTJAR', id: jar, enabled: true, runInBatchMode: false)
     }
