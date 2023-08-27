@@ -24,7 +24,6 @@ public class WebSecurityConfig {
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		
 				
 		//URLごとの認可の設定
 		http.authorizeHttpRequests()										//URL毎の認可設定の開始
