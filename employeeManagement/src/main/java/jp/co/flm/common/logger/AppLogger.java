@@ -1,5 +1,5 @@
 /**
- * ApplicationLogger.java
+ * AppLogger.java
  * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
 package jp.co.flm.common.logger;
@@ -33,7 +33,7 @@ import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
  */
 
 /**
- * ApplicationLoggerクラス
+ * AppLoggerクラス
  * @author kuga
  * @version 1.0 2023/08/27
  */
@@ -43,7 +43,7 @@ public class AppLogger implements HandlerInterceptor {
 	private static final Logger logger = LoggerFactory.getLogger(AppLogger.class);
 
 	/**
-	 * コントローラー実行前の処理
+	 * コントローラー実行前にログ出力をする
 	 * @param 	request	リクエストオブジェクト
 	 * @param 	responseレスポンスオブジェクト
 	 * @param 	handler	実行するために選択されたハンドラー
@@ -75,8 +75,7 @@ public class AppLogger implements HandlerInterceptor {
 		//オブジェクトの型がUserDetailsの時
 		String userId = null;
 		if (principal instanceof UserDetails) { 
-			userId = ((UserDetails) principal).getUsername();
-			
+			userId = ((UserDetails) principal).getUsername();	
 		} else { //UserDetails以外
 			userId = principal.toString();
 		}

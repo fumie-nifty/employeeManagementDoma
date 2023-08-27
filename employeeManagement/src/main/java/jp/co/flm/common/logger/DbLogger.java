@@ -1,5 +1,6 @@
 /**
- * 
+ * DbLogger.java
+ * All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited
  */
 package jp.co.flm.common.logger;
 
@@ -16,8 +17,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import ch.qos.logback.classic.Level;
 
 /**
- * @author lisjxo
- *
+ * DbLoggerクラス
+ * @author kuga
+ * @version 1.0 2023/08/27
  */
 public class DbLogger extends AbstractJdbcLogger<Level>{
 	private static final Logger logger = LoggerFactory .getLogger(DbLogger.class);
