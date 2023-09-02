@@ -4,6 +4,7 @@
  */
 package jp.co.flm;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +14,12 @@ import org.springframework.stereotype.Component;
  * @version 1.0 2023/08/12
  */
 @Component
+@Lazy(false)
 public class SampleBatch {
 
 	@Scheduled(cron="${scheduler.cron}")
 	public void task4() {
         System.out.println("task");
     }
+	
 }
