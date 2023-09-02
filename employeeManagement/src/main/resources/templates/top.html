@@ -30,8 +30,8 @@
 	</div>
 	<div id="footerArea" >
 		<br>
-		<form>
-			<button th:formaction="@{/logout}">ログアウト</button>
+		<form method="post" th:action="@{/logout}">
+			<button>ログアウト</button>
 		</form>
 	</div>
 </body>

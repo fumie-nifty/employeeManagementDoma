@@ -4,14 +4,15 @@
  */
 package jp.co.flm.conf;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * SpringSecurityコンフィグレーションクラス
@@ -20,11 +21,28 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  */
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class WebSecurityConfig {
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-				
+	
+		http.formLogin(login -> login
+	                .loginPage("/login") 
+	        		.defaultSuccessUrl("/")
+	        		.permitAll()
+				).logout(logout -> logout
+		                .logoutSuccessUrl("/login")
+		                .invalidateHttpSession(true)
+		                
+		        ).authorizeHttpRequests(authz -> authz
+		        		.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+		        		.permitAll()
+		        		.antMatchers("/")	//5.7だとrequestMatchersにStringが渡せない模様
+		                .permitAll()
+		                .anyRequest().authenticated()
+		        );
+		/*
 		//URLごとの認可の設定
 		http.authorizeHttpRequests()										//URL毎の認可設定の開始
 			.antMatchers("/images/**","/css/**","/script/*").permitAll()	//image、css、JavaScriptは未ログイン時でもアクセス可能
@@ -48,7 +66,7 @@ public class WebSecurityConfig {
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))		//GETの場合
 			//.logoutUrl("/logout")												//POSTの場合
 			.permitAll();
-			
+		*/
 		return http.build();
 	}
 	
