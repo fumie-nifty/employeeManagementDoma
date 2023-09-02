@@ -1,0 +1,89 @@
+//  doma の gradle設定について、下記を参照してください。
+//      https://doma.readthedocs.io/en/2.20.0/build/（日本語訳ページ）
+
+// テンポラリディレクトリのパスを定義する
+ext.domaResourcesDir = "${buildDir}/tmp/doma-resources"
+
+  // ---- debug用 -------------------------------------
+  //  println "processResources.destinationDir is ${processResources.destinationDir}"
+  //  println "ext.domaResourcesDir            is ${ext.domaResourcesDir}"
+  //  println "compileJava.destinationDir      is ${compileJava.destinationDir}"
+
+// domaが注釈処理で参照するリソースをテンポラリディレクトリに抽出
+task extractDomaResources(type: Copy, dependsOn: processResources)  {
+  from processResources.destinationDir
+  include 'doma.compile.config'
+  include 'META-INF/**/*.sql'
+  include 'META-INF/**/*.script'
+  into domaResourcesDir
+}
+
+// テンポラリディレクトリ内のリソースをcompileJavaタスクの出力先ディレクトリにコピーする
+task copyDomaResources(type: Copy, dependsOn: extractDomaResources)  {
+  from domaResourcesDir
+  into compileJava.destinationDir
+}
+
+compileJava {
+  // 上述のタスクに依存させる
+  dependsOn copyDomaResources
+  // テンポラリディレクトリをcompileJavaタスクの入力ディレクトリに設定する
+  inputs.dir domaResourcesDir
+  options.encoding = 'UTF-8'
+}
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+  maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
+}
+
+dependencies {
+  implementation "org.seasar.doma.boot:doma-spring-boot-starter:1.4.0"
+  annotationProcessor "org.seasar.doma:doma-processor:2.35.0"
+}
+
+eclipse {
+  classpath {
+    // [DOMA4019] 対応
+    //   ソース毎の出力先指定を解除
+    file.whenMerged {
+      entries.each { entry ->
+        if (entry.kind == 'src' && entry.hasProperty('output')) {
+          entry.output = null
+        }
+      }
+    }
+  }
+}
+
+eclipse.jdt.file {
+    // [Javaコンパイラー]->[注釈処理] の設定
+    def  eclipseAptPrefsFile = '.settings/org.eclipse.jdt.apt.core.prefs'
+    file(eclipseAptPrefsFile).write """\
+      |eclipse.preferences.version=1
+      |org.eclipse.jdt.apt.aptEnabled=true
+      |org.eclipse.jdt.apt.genSrcDir=.apt_generated
+      |org.eclipse.jdt.apt.genTestSrcDir=.apt_generated_tests
+      |org.eclipse.jdt.apt.reconcileEnabled=true
+      |""".stripMargin()
+
+
+    // [Javaコンパイラー]->[注釈処理]->[ファクトリーパス] の設定
+    def f = file(".factorypath")
+    def w = new FileWriter(f)
+    def jar = ""
+
+    def xml = new groovy.xml.MarkupBuilder(w)
+    xml.setDoubleQuotes(true)
+    xml."factorypath"() {
+      // doma-core.jar の読込み
+      jar = configurations.annotationProcessor.find { File file -> file.name.matches('doma-core[^//]*') }
+      'factorypathentry'(kind: 'EXTJAR', id: jar, enabled: true, runInBatchMode: false)
+
+      // doma-processorjar の読込み
+      jar = configurations.annotationProcessor.find { File file -> file.name.matches('doma-processor[^//]*') }
+      'factorypathentry'(kind: 'EXTJAR', id: jar, enabled: true, runInBatchMode: false)
+    }
+    w.close()
+}

@@ -1,5 +1,5 @@
 /**
- * QuestionAnsViwmodel.java
+ * QuestionAnsViwModel.java
  * All Rights Reserved. Copyright(c) Fujitsu Learning Media Limited
  */ 
 package jp.co.flm.viewModel;
@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * QuestionAnsViwmodel
+ * QuestionAnsViwModel
  * @author kuga
  * @version 1.0 2023/08/26
  */
@@ -26,6 +26,6 @@ public class QuestionAnsViwModel implements Serializable {
 	private int question_type_id;
 	private int require_flag;
 	private String question_text;
-	private Map<Integer,String> choiceMap;
+	private Map<Integer,String> choiceMap;//<choice_id,choive_text>
 
 }

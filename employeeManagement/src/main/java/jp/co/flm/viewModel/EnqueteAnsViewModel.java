@@ -1,5 +1,5 @@
 /**
- * EnqueteAnsviewModel.java
+ * EnqueteAnsViewModel.java
  * All Rights Reserved. Copyright(c) Fujitsu Learning Media Limited
  */ 
 package jp.co.flm.viewModel;
@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * EnqueteAnsviewModel
+ * EnqueteAnsViewModel
  * @author kuga
  * @version 1.0 2023/08/26
  */

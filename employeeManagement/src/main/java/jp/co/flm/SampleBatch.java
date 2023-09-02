@@ -4,6 +4,8 @@
  */
 package jp.co.flm;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -17,7 +19,8 @@ import org.springframework.stereotype.Component;
 @Lazy(false)
 public class SampleBatch {
 
-	@Scheduled(cron="${scheduler.cron}")
+	@Scheduled(fixedRate = 1, timeUnit = TimeUnit.MINUTES)
+	//@Scheduled(cron="${scheduler.cron}")
 	public void task4() {
         System.out.println("task");
     }

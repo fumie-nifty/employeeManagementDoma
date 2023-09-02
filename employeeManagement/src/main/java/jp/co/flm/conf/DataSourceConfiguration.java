@@ -7,6 +7,7 @@ package jp.co.flm.conf;
 import javax.sql.DataSource;
 
 import org.seasar.doma.jdbc.Config;
+import org.seasar.doma.jdbc.JdbcLogger;
 import org.seasar.doma.jdbc.NoCacheSqlFileRepository;
 import org.seasar.doma.jdbc.SqlFileRepository;
 import org.seasar.doma.jdbc.dialect.Dialect;
@@ -20,6 +21,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import jp.co.flm.common.logger.DbLogger;
 
 /**
  * DataSourceConfigurationコンフィグレーションクラス
@@ -43,6 +46,7 @@ public class DataSourceConfiguration {
 		dataSource.setPassword(properties.getPassword());
 		return new TransactionAwareDataSourceProxy(dataSource);
 	}
+
 	@Bean
 	public PlatformTransactionManager transactionManager() {
 		return new DataSourceTransactionManager(dataSource());
@@ -74,6 +78,12 @@ public class DataSourceConfiguration {
 			@Override
 			public SqlFileRepository getSqlFileRepository() {
 				return sqlFileRepository();
+			}
+
+			//DB用ロガー登録
+			@Override
+			public JdbcLogger getJdbcLogger() {
+				return new DbLogger();
 			}
 		};
 	}
