@@ -21,28 +21,28 @@ public class PasswordEncoderArgon2 {
 
 	//Argon2でパスワードをハッシュ化するテスト
 	public static void main(String[] args) {
-		
+
 		String passcode = args[0];
-		
+
 		//Argon2PasswordEncoderオブジェクトのencodeメソッドを複数呼出し（毎回オブジェクト生成）
 		System.out.println("encode01:");
 		System.out.println(encode01(passcode));
 		System.out.println("encode01:");
 		System.out.println(encode01(passcode));
-		
+
 		PasswordEncoder argon2PasswordEncoder = new Argon2PasswordEncoder();
-		
-		if(argon2PasswordEncoder.matches("password", encode01(passcode))) {
+
+		if (argon2PasswordEncoder.matches("password", encode01(passcode))) {
 			System.out.println("OK");
-		}else {
+		} else {
 			System.out.println("NG");
 		}
-		
+
 		System.out.println();
-		
+
 		System.out.println("encode02:");
 		System.out.println(encode02(passcode));
-		
+
 		//同一のArgon2PasswordEncoderオブジェクトのencodeメソッドを複数呼出し
 		System.out.println(argon2PasswordEncoder.encode(passcode));
 		System.out.println(argon2PasswordEncoder.encode(passcode));
@@ -51,7 +51,7 @@ public class PasswordEncoderArgon2 {
 
 	//コンストラクタ引数なし、初期値でArgon2でパスワードをハッシュ化
 	public static String encode01(String str) {
-		
+
 		PasswordEncoder argon2PasswordEncoder = new Argon2PasswordEncoder();
 
 		String passcode = argon2PasswordEncoder.encode(str);
@@ -68,8 +68,9 @@ public class PasswordEncoderArgon2 {
 		int memory = 1 << 12; //メモリコスト 初期値：1 << 12
 		int iterations = 5; //反復回数 初期値：3
 
-		PasswordEncoder argon2PasswordEncoder = new Argon2PasswordEncoder(saltLength, hashLength, parallelism, memory, iterations);
-		
+		PasswordEncoder argon2PasswordEncoder = new Argon2PasswordEncoder(saltLength, hashLength, parallelism, memory,
+				iterations);
+
 		String passcode = argon2PasswordEncoder.encode(str);
 		return passcode;
 
