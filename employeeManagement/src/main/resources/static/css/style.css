@@ -134,3 +134,21 @@ a.login_top:hover {
 	color: #fff;
 	background: #8aec8a;
 }
+
+button.menubutton {
+	color: rgb(128, 128, 128);
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 240px;
+	padding: 0 10px 0 10px;
+	font-weight: bold;
+	border: 2px solid #8aec8a;
+	transition: 0.5s;
+	background: rgb(187, 255, 187);
+}
+
+button.menubutton:hover {
+	color: rgb(0, 0, 0);
+	background: #8aec8a;
+}
