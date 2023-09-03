@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import jp.co.flm.common.logger.AppLogger;
+import jp.co.flm.common.logger.SessionLogger;
 
 
 /**
@@ -25,10 +26,17 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
             return new AppLogger();
         }
 
+        @Bean
+        SessionLogger sessionLogger() {
+            return new SessionLogger();
+        }
+
         @Override
         public void addInterceptors(InterceptorRegistry registry){
             registry.addInterceptor(appLogger())
                  .addPathPatterns("/**");
+            registry.addInterceptor(sessionLogger())
+            .addPathPatterns("/**");
 
     }
 

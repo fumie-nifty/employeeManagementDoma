@@ -33,6 +33,7 @@ public class WebSecurityConfig {
 	        		.permitAll()
 				).logout(logout -> logout
 		                .logoutSuccessUrl("/login")
+		                .deleteCookies("JSESSIONID")
 		                .invalidateHttpSession(true)
 		                
 		        ).authorizeHttpRequests(authz -> authz
