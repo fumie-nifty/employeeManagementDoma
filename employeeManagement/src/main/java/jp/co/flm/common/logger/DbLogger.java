@@ -47,8 +47,9 @@ public class DbLogger extends AbstractJdbcLogger<Level>{
 
         String newSql = String.valueOf(sql);
         String arrangeSql = newSql.replace(System.getProperty("line.separator").toString(), "");
-        
-        logger.info("[DBLOG] sql:" + arrangeSql + " userId:" + userId);
+        String strSql = arrangeSql.replace("\\n", "");
+                
+        logger.info("[DBLOG] sql:" + strSql + " userId:" + userId);
 
 	 }
 
