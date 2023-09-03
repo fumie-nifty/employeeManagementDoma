@@ -50,10 +50,12 @@ public class SessionLogger implements HandlerInterceptor {
 			@Nullable ModelAndView modelAndView) throws Exception {
 
 
-		//リクエストに紐づくコントローラーメソッドの取得
+		//リクエストに紐づくのがコントローラじゃない場合メソッドを終了する
 		if(!(handler instanceof HandlerMethod)) {
 			return;
 		}
+
+		//リクエストに紐づくコントローラーメソッドの取得
 		HandlerMethod handlerMethod = (HandlerMethod) handler;
 		Method method = handlerMethod.getMethod();
 
@@ -65,6 +67,7 @@ public class SessionLogger implements HandlerInterceptor {
 		
 		HttpSession session = request.getSession(false);
 		
+		//セッションが獲得できた場合、セッションIDを取得する
 		if(session!=null) {
 			sessionId = session.getId();
 		}
