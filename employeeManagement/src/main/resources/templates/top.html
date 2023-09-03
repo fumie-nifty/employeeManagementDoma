@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 <title>例題一覧画面</title>
+<script>
+	function submitForm (obj){
+		alert('a');
+		obj.submit();
+	}
+</script>
 </head>
 <body>
 	<div id="mainArea">
@@ -21,17 +27,25 @@
 		<h3 sec:authorize="authenticated">
 			ようこそ <span sec:authentication="principal.username">ユーザ名</span> さん
 		</h3>
-		<p><a th:href="@{/search}">従業員検索</a></p>
-		<p><a th:href="@{/messageInput}">メッセージ送信</a></p>
-		<p><a th:href="@{/multipleInput}">複数サブミット</a></p>
-		<p><a th:href="@{/nestInput}">フォームの入れ子</a></p>
-		<br>
+		<form method="post" th:action="@{/search}">
+			<button class="menubutton">従業員検索</button></p>
+		</form>
+		<form method="post" th:action="@{/messageInput}">
+			<button class="menubutton">メッセージ送信</button></p>
+		</form>
+		<form method="post" th:action="@{/multipleInput}">
+			<button class="menubutton">複数サブミット</button></p>
+		</form>
+		<form method="post" th:action="@{/nestInput}">
+			<button class="menubutton">フォームの入れ子</button></p>
+		</form>
+		<p><a th:href="@{/messageInput}">従業員検索(CSRF確認用)</a></p>
 	</p>
 	</div>
 	<div id="footerArea" >
 		<br>
-		<form>
-			<button th:formaction="@{/logout}">ログアウト</button>
+		<form method="post" th:action="@{/logout}">
+			<button sec:authorize="authenticated">ログアウト</button>
 		</form>
 	</div>
 </body>
