@@ -1,0 +1,78 @@
+<!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+	<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>アンケート回答入力dynamic画面</title>
+</head>
+
+<body>
+	<div id="mainArea">
+		
+		<h1>アンケート回答 dynamic
+			<div class="userName" sec:authorize="authenticated">
+				ユーザ名：<span sec:authentication="principal.memberName">ユーザ名</span>
+			</div>
+		</h1>
+		
+		<h2>アンケート回答入力画面</h2>
+		<form method="post" th:action="@{/questionaryInput}"
+				th:object="${enqueteAnsViewModel}" class="questionList">
+				
+			<input type="hidden" name="enqueteId" value="">
+			<p th:text="*{enquete_name}">アンケートタイトル</p>
+			
+			<div id="questionItemList">
+				<!--質問のループ（開始）-->
+				<th:block  th:each="questionAnsViwModel,st : *{questionAnsViwModelList}">
+					<div class="questionItem">
+						<p class="questionTitle" th:text="${questionAnsViwModel.question_text}">質問内容</p>
+						<!--単純入力-->
+						<div class="answer" th:if="${questionAnsViwModel.question_type_id}==1">
+	 						<input 
+		 						type="text" 
+		 						th:name="${st.count}" 
+		 						th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_text}" />
+						</div>
+						<!--単一選択入力（ラジオボタン）-->
+						<div class="answer" th:if="${questionAnsViwModel.question_type_id}==2">
+							<!--選択肢のループ（開始）-->
+							<th:block th:each="choice,sts : ${questionAnsViwModel.choiceMap}">
+								<input 
+									type="radio" 
+									th:text="${choice.value}" 
+									th:value="${choice.key}" 
+									th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}"
+								>
+							</th:block>
+							<!--選択肢のループ（終了）-->
+						</div>
+						<!--複数選択入力（チェックボックス）-->
+						<div class="answer" th:if="${questionAnsViwModel.question_type_id}==3">
+							<!--選択肢のループ（開始）-->
+							<th:block th:each="choice,sts : ${questionAnsViwModel.choiceMap}">
+								<input 
+									type="checkbox" 
+									th:text="${choice.value}" 
+									th:value="${choice.key}" 
+									th:field="${questionAnswerForm.qeuestionAnsFormList[__${st.index}__].answer_choice_id_List}"
+								>
+							</th:block>
+							<!--選択肢のループ（終了）-->
+						</div>
+					</div>
+				</th:block>
+				<!--質問のループ（終了）-->
+			</div>
+			<!--送信ボタン-->
+			<button type="submit">回答</button>
+		</form>
+	</div>
+	<div id="footerArea">
+		<a th:href="@{/}">[トップに戻る]</a>
+	</div>
+</body>
+
+</html>

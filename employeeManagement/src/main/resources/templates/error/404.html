@@ -1,0 +1,14 @@
+<!-- All Rights Reserved, Copyright(c) Fujitsu Learning Media Limited -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>エラー画面</title>
+</head>
+<body>
+	<div>ステータスコード：４０４</div>
+  	<div th:text="'error: ' + ${error}"></div>
+  	<div th:text="'message: ' + ${message}"></div>
+</body>
+</html>
