@@ -113,8 +113,14 @@ public class FormNestController {
 		
 		status.setComplete();
 		
-		return "questionnaire-result";
+		return "questionnaire-input-dynamic";
 
+	}
+	
+	@RequestMapping("/nestInputdynamic")
+	public String nestInputdynamic(Model model) {
+		
+		return "";
 	}
 
 }

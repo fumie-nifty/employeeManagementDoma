@@ -65,7 +65,7 @@ public class AppLogger implements HandlerInterceptor {
 
 		//認証されたユーザーの情報の取得
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+		
 		//ログ出力情報取得
 		String controller = method.getDeclaringClass().getSimpleName();
 		String methodName = method.getName();
