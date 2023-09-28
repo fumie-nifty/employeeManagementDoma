@@ -39,7 +39,7 @@ public class SessionLogger implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		
+
 		return true;
 	}
 
@@ -49,9 +49,8 @@ public class SessionLogger implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
 
-
 		//リクエストに紐づくのがコントローラじゃない場合メソッドを終了する
-		if(!(handler instanceof HandlerMethod)) {
+		if (!(handler instanceof HandlerMethod)) {
 			return;
 		}
 
@@ -64,22 +63,22 @@ public class SessionLogger implements HandlerInterceptor {
 		String methodName = method.getName();
 		String httpRequest = request.getMethod();
 		String sessionId = null;
-		
+
 		HttpSession session = request.getSession(false);
-		
+
 		//セッションが獲得できた場合、セッションIDを取得する
-		if(session!=null) {
+		if (session != null) {
 			sessionId = session.getId();
 		}
-		
+
 		//出力メッセージの作成
-		StringBuilder logMessage = new StringBuilder();		
+		StringBuilder logMessage = new StringBuilder();
 		logMessage.append("【SESSIONLOG】");
 		logMessage.append(" HTTPmethod:" + httpRequest);
 		logMessage.append(" Controller:" + controller);
 		logMessage.append(" Method:" + methodName);
 		logMessage.append(" sessionId:" + sessionId);
-		
+
 		//ログ出力
 		logger.info(logMessage.toString());
 

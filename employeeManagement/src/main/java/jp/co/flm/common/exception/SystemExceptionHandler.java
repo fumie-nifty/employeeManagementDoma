@@ -4,7 +4,7 @@
  */
 package jp.co.flm.common.exception;
 
-import org.springframework.dao.DataAccessException;
+import org.seasar.doma.DomaException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class SystemExceptionHandler {
 
 	/**
-	 * システム例外（SystemException・DataAccessException）をハンドリングする
+	 * システム例外（SystemException・CommunicationsException）をハンドリングする
+	 * DomaExceptionかJdbcException
 	 */
-	@ExceptionHandler({ SystemException.class, DataAccessException.class })
+	@ExceptionHandler({ SystemException.class ,DomaException.class})
 	public String handleError(Model model) {
 		model.addAttribute("message", "システムエラーです。システム管理者に連絡してください。");
 		return "/error";
